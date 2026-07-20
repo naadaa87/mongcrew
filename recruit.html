@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>몽크루 모집하기 — 몽크루</title>
+<meta name="description" content="5단계 5분이면 완성되는 몽골 동행 모집글. 일정·코스·좌석·가격·약속을 구조화하고 실시간 카드 미리보기로 확인하세요.">
+<meta property="og:title" content="몽크루 모집하기 — 몽크루">
+<meta property="og:description" content="5단계 5분이면 완성되는 몽골 동행 모집글. 일정·코스·좌석·가격·약속을 구조화하고 실시간 카드 미리보기로 확인하세요.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/img/og-image.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/logo/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<div class="ribbon">몽크루 비공개 베타를 준비 중입니다 · <a href="index.html#wait">대기등록</a>하고 오픈 소식과 얼리버드 혜택을 가장 먼저 받아보세요</div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand" aria-label="몽크루 홈">
+      <img class="b-logo" src="assets/logo/logo-ko-navy.png" alt="몽크루 MONGOLIA CREW">
+    </a>
+    <nav class="main-nav" id="mainNav" aria-label="주요 메뉴">
+      <a href="companion.html" class="is-active">몽크루 찾기</a>
+      <a href="regions.html">지역 가이드</a>
+      <a href="guide.html">여행 준비</a>
+      <a href="trust.html">신뢰·크루페이</a>
+      <a href="community.html">크루라운지</a>
+      <a href="partners.html">프로크루</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn-ghost btn-sm" href="index.html#wait">대기등록</a>
+      <a class="btn btn-primary btn-sm" href="recruit.html">몽크루 모집하기</a>
+    </div>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="mainNav" aria-label="메뉴 열기">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5h14M3 10h14M3 15h14"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero on-photo">
+    <div class="ph-media" style="background-image:url('assets/img/recruit-meetup.webp')" role="img" aria-label="출발 전 카페에 모여 몽골 일정을 함께 확인하는 크루"></div>
+    <div class="ph-scrim"></div>
+    <div class="container">
+      <span class="eyebrow">START YOUR CREW</span>
+      <h1>몽크루 모집하기</h1>
+      <p class="lead">긴 소개글보다 정확한 조건이 좋은 크루를 부릅니다. 5단계, 모바일에서도 5분이면 충분해요. 작성하는 동안 실제 카드가 어떻게 보일지 함께 확인하세요.</p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <div class="wizard" id="wizard">
+        <div class="wiz-main">
+          <div class="wiz-steps" aria-hidden="true">
+            <span class="ws now">1 일정</span><span class="ws">2 코스</span><span class="ws">3 인원·성향</span><span class="ws">4 가격·업체</span><span class="ws">5 약속</span>
+          </div>
+
+          <div class="card card-pad">
+            <div class="wiz-panel on">
+              <h3>언제 가나요</h3>
+              <div class="field"><label for="wzDate">현지 투어 시작일</label><input type="date" id="wzDate" value="2026-08-10"></div>
+              <div class="field"><label for="wzDays">기간</label>
+                <select id="wzDays"><option>3박 4일</option><option>4박 5일</option><option>5박 6일</option><option selected>6박 7일</option><option>7박 8일</option><option>9박 10일</option></select>
+              </div>
+              <div class="field"><label>날짜 조정 가능 범위</label>
+                <select><option>조정 불가 (항공권 확정)</option><option selected>±1일 가능</option><option>±3일 가능</option></select>
+                <span class="hint">조정 범위를 열어 두면 ‘부분 일치’ 검색에도 노출되어 신청이 늘어납니다.</span>
+              </div>
+            </div>
+
+            <div class="wiz-panel">
+              <h3>어디를 가나요</h3>
+              <div class="field"><label for="wzRoute">코스 템플릿</label>
+                <select id="wzRoute">
+                  <option>남고비 정석 6박 7일 — 욜링암·홍고린엘스·바양작</option>
+                  <option>홉스골 호수 5박 6일</option>
+                  <option>중부 순환 5박 6일 — 카라코룸·쳉헤르 온천</option>
+                  <option>테를지 입문 2박 3일</option>
+                  <option>알타이 타왕복드 9박 10일</option>
+                </select>
+                <span class="hint">템플릿을 고르면 일차별 경로가 자동으로 채워지고, 나중에 순서를 조정할 수 있어요.</span>
+              </div>
+              <div class="field"><label for="wzScene">카드 배경</label>
+                <select id="wzScene"><option value="gobi">고비 사막</option><option value="lake">홉스골 호수</option><option value="steppe">초원</option><option value="night">별이 쏟아지는 밤</option><option value="central">중부 온천</option><option value="terelj">테를지</option><option value="altai">알타이 설산</option><option value="winter">겨울 설원</option></select>
+              </div>
+            </div>
+
+            <div class="wiz-panel">
+              <h3>누구를 찾나요</h3>
+              <div class="grid grid-2">
+                <div class="field"><label for="wzCur">현재 인원 (나 포함)</label><input type="number" id="wzCur" min="1" max="7" value="1"></div>
+                <div class="field"><label for="wzGoal">목표 인원</label><input type="number" id="wzGoal" min="2" max="8" value="6"><span class="hint">푸르공 1대는 보통 5–6명이 가장 쾌적해요.</span></div>
+              </div>
+              <div class="field"><label for="wzGroup">팀 구성</label>
+                <select id="wzGroup"><option>누구나</option><option>여성전용</option><option>커플 1팀 가능</option></select>
+              </div>
+              <div class="field"><label>여행 성향 (선택)</label>
+                <div class="flex"><span class="chip">비흡연</span><span class="chip">사진·별</span><span class="chip">승마</span><span class="chip">아침형</span><span class="chip">반주 가볍게</span></div>
+                <span class="hint">외모·연애 관련 조건은 입력할 수 없어요. 감지되면 게시 전에 수정 안내가 나갑니다.</span>
+              </div>
+            </div>
+
+            <div class="wiz-panel">
+              <h3>비용 구조와 업체</h3>
+              <div class="grid grid-2">
+                <div class="field"><label for="wzFixed">팀 고정비 (만원)</label><input type="number" id="wzFixed" min="0" value="420"><span class="hint">차량·기사·가이드 등 팀이 나누는 금액</span></div>
+                <div class="field"><label for="wzVar">1인 변동비 (만원)</label><input type="number" id="wzVar" min="0" value="35"><span class="hint">식사·숙박·입장료 등 1인당 금액</span></div>
+              </div>
+              <div class="field"><label for="wzPay">업체 · 결제 상태</label>
+                <select id="wzPay"><option value="safe">업체 확정 · 크루페이 사용</option><option value="tbd">업체 미정 · 견적 비교 중</option><option value="direct">업체 확정 · 팀이 직접 계약</option></select>
+                <span class="hint">현재 인원 기준가와 목표 인원 완성가가 카드에 자동으로 함께 표시됩니다.</span>
+              </div>
+            </div>
+
+            <div class="wiz-panel">
+              <h3>모집 리더의 약속</h3>
+              <p class="small muted">아래 약속은 모집글 하단에 그대로 공개되며, 위반 시 온도 하락과 제재 대상이 됩니다.</p>
+              <div id="wizAgree">
+                <label class="check"><input type="checkbox"><span>참가비를 <b>개인계좌로 걷지 않고</b>, 확약금·여행대금은 크루페이(PG)로만 진행합니다.</span></label>
+                <label class="check"><input type="checkbox"><span>잠금일·취소·교체 규칙을 미리 고지하고, 확정된 팀원을 임의로 내보내지 않습니다.</span></label>
+                <label class="check"><input type="checkbox"><span>이 모집은 관광 동행 목적이며 데이팅·영업·종교·투자 권유 목적이 아닙니다.</span></label>
+                <label class="check"><input type="checkbox"><span>신청과 문의에 <b>24시간 안에</b> 응답하겠습니다.</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="wiz-nav">
+            <button class="btn btn-ghost" id="wzPrev">이전</button>
+            <button class="btn btn-primary" id="wzNext">다음</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="preview-sticky">
+            <p class="small muted mb3">실시간 카드 미리보기</p>
+            <div id="wzPreview"></div>
+            <div class="callout co-info mt4 small">
+              게시 전 자동 검수: 전화번호·카카오 ID·오픈채팅 링크·계좌번호가 감지되면 상호수락 전까지 자동으로 가려지고, 개인계좌 입금 요구 문구는 게시가 제한됩니다.
+            </div>
+          </div>
+        </div>
+
+        <div id="wizDone" style="display:none;grid-column:1/-1">
+          <div class="card card-pad tc" style="padding:56px 24px">
+            <span class="st st-open mb4">미리보기 완성</span>
+            <h2>모집글이 준비되었습니다</h2>
+            <p class="muted" style="max-width:520px;margin:0 auto 24px">지금은 베타 준비 기간이라 게시가 열려 있지 않아요.<br>대기등록을 남겨 두시면 오픈 즉시 이 초안 그대로 게시할 수 있도록 알려 드릴게요.</p>
+            <div class="flex" style="justify-content:center"><a class="btn btn-primary" href="index.html#wait">베타 대기등록</a><a class="btn btn-ghost" href="companion.html">다른 팀 둘러보기</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-3 mt6">
+        <div class="card card-pad"><b>좌석 = 결제 완료</b><p class="small muted mb0">채팅방 인원이 아니라 확약결제를 마친 사람만 ‘확정’으로 셉니다. 허수 인원이 사라져요.</p></div>
+        <div class="card card-pad"><b>품질 점수 70점</b><p class="small muted mb0">일정·좌석·가격·성향 정보가 충분히 채워진 글이 먼저 노출됩니다. 리더 인기가 아니라 글의 완성도가 기준이에요.</p></div>
+        <div class="card card-pad"><b>리더 도구 제공</b><p class="small muted mb0">공지·투표·결제 현황·공동 체크리스트까지. 리더의 조율 부담을 시스템이 나눠 집니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <img class="flogo" src="assets/logo/logo-ko-white.png" alt="몽크루 MONGOLIA CREW">
+        <p class="fdesc">함께 가는 몽골, 안심되는 동행.<br>일정과 성향이 맞는 몽크루를 찾고, 크루온도와 크루페이로 출발까지 안전하게 확정하는 몽골 특화 동행 플랫폼입니다.</p>
+      </div>
+      <div>
+        <h5>서비스</h5>
+        <ul>
+          <li><a href="companion.html">몽크루 찾기</a></li>
+          <li><a href="recruit.html">몽크루 모집하기</a></li>
+          <li><a href="regions.html">지역 가이드</a></li>
+          <li><a href="guide.html">여행 준비 · 크루픽</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>신뢰와 안전</h5>
+        <ul>
+          <li><a href="trust.html#temp">크루온도란</a></li>
+          <li><a href="trust.html#pay">크루페이 구조</a></li>
+          <li><a href="trust.html#refund">취소·환불 규정</a></li>
+          <li><a href="trust.html#report">신고 센터</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>프로크루 · 회사</h5>
+        <ul>
+          <li><a href="partners.html#join">프로크루 입점 안내</a></li>
+          <li><a href="partners.html#policy">광고·중립성 원칙</a></li>
+          <li><a href="community.html">크루라운지</a></li>
+          <li><a href="index.html#wait">베타 대기등록</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p>몽크루는 여행자 간, 그리고 여행자와 등록 여행업체 간의 연결을 돕는 플랫폼(통신판매중개)이며 여행상품 계약의 당사자가 아닙니다. 상품·일정·요금·환불 의무는 각 판매자(등록 여행업체)에게 있습니다.</p>
+      <p>크루페이의 결제 수납·보류·환불은 등록된 전자지급결제대행사(PG)가 처리하며, 몽크루는 약정 조건의 성립 확인과 정산 지시를 담당합니다. 여행자 개인 간 공동경비는 플랫폼이 보관하지 않습니다.</p>
+      <p>현재 사이트에 표시된 모집글·가격·후기·업체 정보 일부는 서비스 소개를 위한 예시입니다. 여행 정보는 최종 확인일 기준이며 출발 전 공식 출처를 다시 확인해 주세요.</p>
+      <p>© <span data-year>2026</span> 몽크루 MONGOLIA CREW · 문의 hello@mongcrew.example</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

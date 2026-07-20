@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>몽크루 찾기 — 몽크루 MONGOLIA CREW</title>
+<meta name="description" content="날짜·코스·좌석·성향으로 몽골 동행을 찾으세요. 좌석은 확약결제 완료 기준, 크루페이와 크루온도로 믿을 수 있는 팀만.">
+<meta property="og:title" content="몽크루 찾기 — 몽크루 MONGOLIA CREW">
+<meta property="og:description" content="날짜·코스·좌석·성향으로 몽골 동행을 찾으세요. 좌석은 확약결제 완료 기준, 크루페이와 크루온도로 믿을 수 있는 팀만.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/img/og-image.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/logo/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<div class="ribbon">몽크루 비공개 베타를 준비 중입니다 · <a href="index.html#wait">대기등록</a>하고 오픈 소식과 얼리버드 혜택을 가장 먼저 받아보세요</div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand" aria-label="몽크루 홈">
+      <img class="b-logo" src="assets/logo/logo-ko-navy.png" alt="몽크루 MONGOLIA CREW">
+    </a>
+    <nav class="main-nav" id="mainNav" aria-label="주요 메뉴">
+      <a href="companion.html" class="is-active">몽크루 찾기</a>
+      <a href="regions.html">지역 가이드</a>
+      <a href="guide.html">여행 준비</a>
+      <a href="trust.html">신뢰·크루페이</a>
+      <a href="community.html">크루라운지</a>
+      <a href="partners.html">프로크루</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn-ghost btn-sm" href="index.html#wait">대기등록</a>
+      <a class="btn btn-primary btn-sm" href="recruit.html">몽크루 모집하기</a>
+    </div>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="mainNav" aria-label="메뉴 열기">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5h14M3 10h14M3 15h14"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">FIND YOUR CREW</span>
+      <h1>몽크루 찾기</h1>
+      <p class="lead">확정은 채팅방 입장이 아니라 상호수락과 확약결제로 만들어집니다. 카드에 보이는 좌석 수는 결제를 마친 ‘진짜 인원’ 기준이에요.</p>
+      <div class="flex mt5" aria-label="확정 절차">
+        <span class="st st-open">모집중</span><span class="muted" aria-hidden="true">→</span>
+        <span class="st st-hold">신청 · 상호수락</span><span class="muted" aria-hidden="true">→</span>
+        <span class="st st-hold">24시간 내 확약결제</span><span class="muted" aria-hidden="true">→</span>
+        <span class="st st-open">팀 확정</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <div class="browse">
+        <aside class="filter-col" id="filterCol" aria-label="필터">
+          <div class="f-group">
+            <h4>코스</h4>
+            <div class="chips">
+              <button class="chip" data-f="route:gobi" aria-pressed="false">고비</button>
+              <button class="chip" data-f="route:khuvsgul" aria-pressed="false">홉스골</button>
+              <button class="chip" data-f="route:central" aria-pressed="false">중부</button>
+              <button class="chip" data-f="route:terelj" aria-pressed="false">테를지·울란</button>
+              <button class="chip" data-f="route:altai" aria-pressed="false">알타이·서부</button>
+              <button class="chip" data-f="route:winter" aria-pressed="false">겨울</button>
+            </div>
+          </div>
+          <div class="f-group">
+            <h4>출발 시기</h4>
+            <div class="chips">
+              <button class="chip" data-f="month:7" aria-pressed="false">7월</button>
+              <button class="chip" data-f="month:8" aria-pressed="false">8월</button>
+              <button class="chip" data-f="month:9" aria-pressed="false">9월</button>
+              <button class="chip" data-f="month:3" aria-pressed="false">겨울 시즌</button>
+            </div>
+          </div>
+          <div class="f-group">
+            <h4>남은 좌석</h4>
+            <div class="chips">
+              <button class="chip" data-f="seat:1" aria-pressed="false">마지막 1석</button>
+              <button class="chip" data-f="seat:2" aria-pressed="false">2석 이상</button>
+            </div>
+          </div>
+          <div class="f-group">
+            <h4>결제 방식</h4>
+            <div class="chips">
+              <button class="chip" data-f="pay:1" aria-pressed="false">크루페이 팀만</button>
+            </div>
+          </div>
+          <div class="f-group">
+            <h4>팀 구성</h4>
+            <div class="chips">
+              <button class="chip" data-f="group:w" aria-pressed="false">여성전용</button>
+              <button class="chip" data-f="group:mixed" aria-pressed="false">혼성 · 누구나</button>
+            </div>
+            <p class="small muted mt3 mb0">팀 구성 조건은 매칭 필터일 뿐, 신뢰점수에는 반영되지 않아요.</p>
+          </div>
+          <div class="f-group">
+            <h4>테마</h4>
+            <div class="chips">
+              <button class="chip" data-f="theme:first" aria-pressed="false">첫 몽골</button>
+              <button class="chip" data-f="theme:star" aria-pressed="false">사진 · 별</button>
+              <button class="chip" data-f="theme:horse" aria-pressed="false">승마</button>
+              <button class="chip" data-f="theme:trek" aria-pressed="false">트레킹</button>
+              <button class="chip" data-f="theme:winter" aria-pressed="false">겨울</button>
+            </div>
+          </div>
+        </aside>
+
+        <div>
+          <div class="result-bar">
+            <span class="rc">모집 중인 팀 <b id="resultCount">9</b>개 <span class="muted small">· 예시 데이터</span></span>
+            <div class="flex">
+              <button class="btn btn-ghost btn-sm filter-toggle" id="filterToggle">필터</button>
+              <label class="small muted" for="sortSel">정렬</label>
+              <select class="sortsel" id="sortSel">
+                <option value="reco">추천순</option>
+                <option value="soon">출발 임박순</option>
+                <option value="trust">크루온도순</option>
+                <option value="new">최신 등록순</option>
+              </select>
+            </div>
+          </div>
+
+          <details class="acc mb4">
+            <summary>왜 이 순서로 보이나요?</summary>
+            <div class="acc-body">
+              <p>크루매치 추천순은 <b>출발일·코스·남은 좌석의 일치</b>가 가장 큰 비중을 차지하고, 그다음 여행 성향·신뢰(온도·여행완료)·응답성을 반영합니다. 유료 광고는 추천 점수에 포함하지 않으며 별도의 ‘광고’ 슬롯으로만 노출됩니다. 본인확인을 마친 신규 리더에게도 탐색 기회를 배분해, 평점 부익부를 막습니다.</p>
+            </div>
+          </details>
+
+          <div class="grid grid-2" id="tripList"></div>
+
+          <div class="callout co-info mt6">
+            <b>크루페이 라벨이 붙은 팀은</b> 확약금을 리더 개인계좌가 아닌 등록 PG사가 받고, 팀 잠금·최소인원 조건이 지켜져야 정산됩니다. 개인계좌 선입금을 요구받았다면 결제하지 말고 바로 신고해 주세요. <a href="trust.html#pay" style="font-weight:700;text-decoration:underline;text-underline-offset:3px">크루페이 구조 보기</a>
+          </div>
+
+          <div class="card card-pad mt5" id="wait">
+            <div class="flex between">
+              <div>
+                <h3 class="mb0">딱 맞는 팀이 없나요?</h3>
+                <p class="small muted mb0">날짜·코스를 남겨 두면 조건이 맞는 새 팀이 생길 때 알려 드려요.</p>
+              </div>
+              <form class="flex" data-demo="대기등록이 접수되었습니다. 조건이 맞는 팀이 생기면 알려 드릴게요." style="flex:1;min-width:260px;justify-content:flex-end">
+                <input type="email" required placeholder="이메일 주소" aria-label="이메일 주소" style="flex:1;max-width:280px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font:inherit">
+                <button class="btn btn-primary" type="submit">대기등록</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <img class="flogo" src="assets/logo/logo-ko-white.png" alt="몽크루 MONGOLIA CREW">
+        <p class="fdesc">함께 가는 몽골, 안심되는 동행.<br>일정과 성향이 맞는 몽크루를 찾고, 크루온도와 크루페이로 출발까지 안전하게 확정하는 몽골 특화 동행 플랫폼입니다.</p>
+      </div>
+      <div>
+        <h5>서비스</h5>
+        <ul>
+          <li><a href="companion.html">몽크루 찾기</a></li>
+          <li><a href="recruit.html">몽크루 모집하기</a></li>
+          <li><a href="regions.html">지역 가이드</a></li>
+          <li><a href="guide.html">여행 준비 · 크루픽</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>신뢰와 안전</h5>
+        <ul>
+          <li><a href="trust.html#temp">크루온도란</a></li>
+          <li><a href="trust.html#pay">크루페이 구조</a></li>
+          <li><a href="trust.html#refund">취소·환불 규정</a></li>
+          <li><a href="trust.html#report">신고 센터</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>프로크루 · 회사</h5>
+        <ul>
+          <li><a href="partners.html#join">프로크루 입점 안내</a></li>
+          <li><a href="partners.html#policy">광고·중립성 원칙</a></li>
+          <li><a href="community.html">크루라운지</a></li>
+          <li><a href="index.html#wait">베타 대기등록</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p>몽크루는 여행자 간, 그리고 여행자와 등록 여행업체 간의 연결을 돕는 플랫폼(통신판매중개)이며 여행상품 계약의 당사자가 아닙니다. 상품·일정·요금·환불 의무는 각 판매자(등록 여행업체)에게 있습니다.</p>
+      <p>크루페이의 결제 수납·보류·환불은 등록된 전자지급결제대행사(PG)가 처리하며, 몽크루는 약정 조건의 성립 확인과 정산 지시를 담당합니다. 여행자 개인 간 공동경비는 플랫폼이 보관하지 않습니다.</p>
+      <p>현재 사이트에 표시된 모집글·가격·후기·업체 정보 일부는 서비스 소개를 위한 예시입니다. 여행 정보는 최종 확인일 기준이며 출발 전 공식 출처를 다시 확인해 주세요.</p>
+      <p>© <span data-year>2026</span> 몽크루 MONGOLIA CREW · 문의 hello@mongcrew.example</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
