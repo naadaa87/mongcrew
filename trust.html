@@ -17,34 +17,67 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<!-- @HEAD_SCRIPTS -->
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script defer src="js/config.js"></script>
+<script defer src="js/auth.js"></script>
+<!-- /@HEAD_SCRIPTS -->
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
 
-<div class="ribbon">몽크루 비공개 베타를 준비 중입니다 · <a href="index.html#wait">대기등록</a>하고 오픈 소식과 얼리버드 혜택을 가장 먼저 받아보세요</div>
+<!-- @RIBBON -->
+<div class="ribbon">몽크루 비공개 베타를 준비 중입니다 · <a href="/#wait">대기등록</a>하고 오픈 소식과 얼리버드 혜택을 가장 먼저 받아보세요</div>
+<!-- /@RIBBON -->
 
+<!-- @HEADER -->
 <header class="site-header">
   <div class="container header-inner">
-    <a href="index.html" class="brand" aria-label="몽크루 홈">
+    <a href="/" class="brand" aria-label="몽크루 홈">
       <img class="b-logo" src="assets/logo/logo-ko-navy.png" alt="몽크루 MONGOLIA CREW">
     </a>
     <nav class="main-nav" id="mainNav" aria-label="주요 메뉴">
-      <a href="companion.html">몽크루 찾기</a>
-      <a href="regions.html">지역 가이드</a>
-      <a href="guide.html">여행 준비</a>
-      <a href="trust.html" class="is-active">신뢰·크루페이</a>
-      <a href="community.html">크루라운지</a>
-      <a href="partners.html">프로크루</a>
+      <a href="companion">몽크루 찾기</a>
+      <a href="regions">지역 가이드</a>
+      <a href="guide">여행 준비</a>
+      <a href="trust" class="is-active">신뢰·크루페이</a>
+      <a href="community">크루라운지</a>
+      <a href="partners">프로크루</a>
+      <div class="nav-auth-mobile">
+        <a data-auth-out href="login">로그인 · 회원가입</a>
+        <a data-auth-in hidden href="mypage">마이페이지</a>
+      </div>
     </nav>
     <div class="header-actions">
-      <a class="btn btn-ghost btn-sm" href="index.html#wait">대기등록</a>
-      <a class="btn btn-primary btn-sm" href="recruit.html">몽크루 모집하기</a>
+      <div data-auth-out class="flex" style="gap:8px;flex-wrap:nowrap">
+        <a class="btn btn-ghost btn-sm" href="login">로그인</a>
+        <a class="btn btn-primary btn-sm" href="recruit">몽크루 모집하기</a>
+      </div>
+      <div data-auth-in class="auth-in" hidden>
+        <a class="btn btn-primary btn-sm" href="recruit">몽크루 모집하기</a>
+        <div class="avatar-menu" data-auth-menu>
+          <button type="button" class="avatar-btn" data-auth-menu-btn aria-haspopup="true" aria-expanded="false" aria-label="내 계정 메뉴">
+            <span class="avatar"><img data-auth-avatar alt="" hidden><span data-auth-initial>M</span></span>
+            <span class="avatar-name" data-auth-name>크루</span>
+            <svg class="ac" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m4 6 4 4 4-4"/></svg>
+          </button>
+          <div class="avatar-drop">
+            <div class="who"><b data-auth-name>크루</b><span>몽크루 멤버 · 크루온도 36.5℃</span></div>
+            <div class="sep"></div>
+            <a href="mypage">마이페이지</a>
+            <a href="recruit">몽크루 모집하기</a>
+            <div class="sep"></div>
+            <button type="button" data-auth-signout>로그아웃</button>
+          </div>
+        </div>
+      </div>
     </div>
     <button class="nav-toggle" aria-expanded="false" aria-controls="mainNav" aria-label="메뉴 열기">
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5h14M3 10h14M3 15h14"/></svg>
     </button>
   </div>
 </header>
+<!-- /@HEADER -->
 
 <main id="main">
 
@@ -263,7 +296,7 @@
           <p style="color:#FBE3E0">채팅·프로필·결제·모집글 어디서든 두 번의 탭으로 신고할 수 있어요. 중대 신고는 관련 로그가 자동 보전되고 1시간 안에 보호 조치가 시작됩니다. 여행 중 긴급 상황은 현지 경찰 102 · 구급 103, 대한민국 영사콜센터 +82-2-3210-0404(24시간)로 먼저 연락하세요.</p>
           <div class="flex">
             <button class="btn btn-light" onclick="mmToast('신고 접수 데모입니다. 실제 서비스에서는 1시간 내 보호 조치가 시작됩니다.')">신고하기</button>
-            <a class="btn" style="border-color:rgba(255,255,255,.5);color:#fff" href="guide.html#safety">현지 안전 정보</a>
+            <a class="btn" style="border-color:rgba(255,255,255,.5);color:#fff" href="guide#safety">현지 안전 정보</a>
           </div>
         </div>
         <div>
@@ -298,6 +331,7 @@
 
 </main>
 
+<!-- @FOOTER -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-top">
@@ -308,30 +342,35 @@
       <div>
         <h5>서비스</h5>
         <ul>
-          <li><a href="companion.html">몽크루 찾기</a></li>
-          <li><a href="recruit.html">몽크루 모집하기</a></li>
-          <li><a href="regions.html">지역 가이드</a></li>
-          <li><a href="guide.html">여행 준비 · 크루픽</a></li>
+          <li><a href="companion">몽크루 찾기</a></li>
+          <li><a href="recruit">몽크루 모집하기</a></li>
+          <li><a href="regions">지역 가이드</a></li>
+          <li><a href="guide">여행 준비 · 크루픽</a></li>
         </ul>
       </div>
       <div>
         <h5>신뢰와 안전</h5>
         <ul>
-          <li><a href="trust.html#temp">크루온도란</a></li>
-          <li><a href="trust.html#pay">크루페이 구조</a></li>
-          <li><a href="trust.html#refund">취소·환불 규정</a></li>
-          <li><a href="trust.html#report">신고 센터</a></li>
+          <li><a href="trust#temp">크루온도란</a></li>
+          <li><a href="trust#pay">크루페이 구조</a></li>
+          <li><a href="trust#refund">취소·환불 규정</a></li>
+          <li><a href="trust#report">신고 센터</a></li>
         </ul>
       </div>
       <div>
-        <h5>프로크루 · 회사</h5>
+        <h5>회원 · 회사</h5>
         <ul>
-          <li><a href="partners.html#join">프로크루 입점 안내</a></li>
-          <li><a href="partners.html#policy">광고·중립성 원칙</a></li>
-          <li><a href="community.html">크루라운지</a></li>
-          <li><a href="index.html#wait">베타 대기등록</a></li>
+          <li><a href="login">로그인 · 회원가입</a></li>
+          <li><a href="partners#join">프로크루 입점 안내</a></li>
+          <li><a href="community">크루라운지</a></li>
+          <li><a href="/#wait">베타 대기등록</a></li>
         </ul>
       </div>
+    </div>
+    <div class="footer-links">
+      <a href="terms">이용약관</a>
+      <a href="privacy"><b>개인정보처리방침</b></a>
+      <a href="trust#report">신고 센터</a>
     </div>
     <div class="footer-legal">
       <p>몽크루는 여행자 간, 그리고 여행자와 등록 여행업체 간의 연결을 돕는 플랫폼(통신판매중개)이며 여행상품 계약의 당사자가 아닙니다. 상품·일정·요금·환불 의무는 각 판매자(등록 여행업체)에게 있습니다.</p>
@@ -341,7 +380,11 @@
     </div>
   </div>
 </footer>
+<!-- /@FOOTER -->
 
+<!-- @BODY_SCRIPTS -->
+<script src="js/data.js"></script>
 <script src="js/main.js"></script>
+<!-- /@BODY_SCRIPTS -->
 </body>
 </html>

@@ -17,34 +17,67 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<!-- @HEAD_SCRIPTS -->
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script defer src="js/config.js"></script>
+<script defer src="js/auth.js"></script>
+<!-- /@HEAD_SCRIPTS -->
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
 
-<div class="ribbon">몽크루 비공개 베타를 준비 중입니다 · <a href="index.html#wait">대기등록</a>하고 오픈 소식과 얼리버드 혜택을 가장 먼저 받아보세요</div>
+<!-- @RIBBON -->
+<div class="ribbon">몽크루 비공개 베타를 준비 중입니다 · <a href="/#wait">대기등록</a>하고 오픈 소식과 얼리버드 혜택을 가장 먼저 받아보세요</div>
+<!-- /@RIBBON -->
 
+<!-- @HEADER -->
 <header class="site-header">
   <div class="container header-inner">
-    <a href="index.html" class="brand" aria-label="몽크루 홈">
+    <a href="/" class="brand" aria-label="몽크루 홈">
       <img class="b-logo" src="assets/logo/logo-ko-navy.png" alt="몽크루 MONGOLIA CREW">
     </a>
     <nav class="main-nav" id="mainNav" aria-label="주요 메뉴">
-      <a href="companion.html">몽크루 찾기</a>
-      <a href="regions.html">지역 가이드</a>
-      <a href="guide.html">여행 준비</a>
-      <a href="trust.html">신뢰·크루페이</a>
-      <a href="community.html">크루라운지</a>
-      <a href="partners.html">프로크루</a>
+      <a href="companion">몽크루 찾기</a>
+      <a href="regions">지역 가이드</a>
+      <a href="guide">여행 준비</a>
+      <a href="trust">신뢰·크루페이</a>
+      <a href="community">크루라운지</a>
+      <a href="partners">프로크루</a>
+      <div class="nav-auth-mobile">
+        <a data-auth-out href="login">로그인 · 회원가입</a>
+        <a data-auth-in hidden href="mypage">마이페이지</a>
+      </div>
     </nav>
     <div class="header-actions">
-      <a class="btn btn-ghost btn-sm" href="index.html#wait">대기등록</a>
-      <a class="btn btn-primary btn-sm" href="recruit.html">몽크루 모집하기</a>
+      <div data-auth-out class="flex" style="gap:8px;flex-wrap:nowrap">
+        <a class="btn btn-ghost btn-sm" href="login">로그인</a>
+        <a class="btn btn-primary btn-sm" href="recruit">몽크루 모집하기</a>
+      </div>
+      <div data-auth-in class="auth-in" hidden>
+        <a class="btn btn-primary btn-sm" href="recruit">몽크루 모집하기</a>
+        <div class="avatar-menu" data-auth-menu>
+          <button type="button" class="avatar-btn" data-auth-menu-btn aria-haspopup="true" aria-expanded="false" aria-label="내 계정 메뉴">
+            <span class="avatar"><img data-auth-avatar alt="" hidden><span data-auth-initial>M</span></span>
+            <span class="avatar-name" data-auth-name>크루</span>
+            <svg class="ac" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m4 6 4 4 4-4"/></svg>
+          </button>
+          <div class="avatar-drop">
+            <div class="who"><b data-auth-name>크루</b><span>몽크루 멤버 · 크루온도 36.5℃</span></div>
+            <div class="sep"></div>
+            <a href="mypage">마이페이지</a>
+            <a href="recruit">몽크루 모집하기</a>
+            <div class="sep"></div>
+            <button type="button" data-auth-signout>로그아웃</button>
+          </div>
+        </div>
+      </div>
     </div>
     <button class="nav-toggle" aria-expanded="false" aria-controls="mainNav" aria-label="메뉴 열기">
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5h14M3 10h14M3 15h14"/></svg>
     </button>
   </div>
 </header>
+<!-- /@HEADER -->
 
 <main id="main">
 
@@ -58,11 +91,11 @@
         <h1>함께 가는 몽골,<br>안심되는 동행</h1>
         <p class="lead">일정과 성향이 맞는 몽크루를 찾고, 크루온도로 서로를 확인하고, 크루페이로 약속과 결제까지 안전하게 확정하세요.</p>
         <div class="hero-cta">
-          <a class="btn btn-primary" href="companion.html">몽크루 찾기</a>
-          <a class="btn btn-line-w" href="recruit.html">몽크루 모집하기</a>
+          <a class="btn btn-primary" href="companion">몽크루 찾기</a>
+          <a class="btn btn-line-w" href="recruit">몽크루 모집하기</a>
         </div>
         <div class="hero-stats">
-          <div class="hstat"><span class="v">90일</span><span class="k">관광 무비자 · 2026.12.31까지</span></div>
+          <div class="hstat"><span class="v">90일</span><span class="k">관광 무비자 · 한시 시행 중(출발 전 확인)</span></div>
           <div class="hstat"><span class="v">3h 40m</span><span class="k">인천–울란바토르 직항</span></div>
           <div class="hstat"><span class="v">6–9월</span><span class="k">초원이 가장 푸른 성수기</span></div>
         </div>
@@ -76,19 +109,14 @@
       <div class="sp-grid">
         <div class="sp-field">
           <label for="hsRoute">어디로 가고 싶나요</label>
-          <select id="hsRoute">
-            <option value="">전체 코스</option>
-            <option value="gobi">고비 사막</option>
-            <option value="khuvsgul">홉스골 호수</option>
-            <option value="central">중부 순환 (온천·카라코룸)</option>
-            <option value="terelj">테를지 · 울란바토르</option>
-            <option value="altai">알타이 · 서부</option>
-            <option value="winter">겨울 몽골</option>
-          </select>
+          <select id="hsRoute" data-region-select data-custom-toggle="hsCustomSlot"></select>
+          <div class="custom-slot" id="hsCustomSlot">
+            <input type="text" id="hsCustom" placeholder="예: 옵스 호수, 만주시르 사원…" aria-label="가고 싶은 곳 직접 입력">
+          </div>
         </div>
         <div class="sp-field">
           <label for="hsDate">언제 출발하나요</label>
-          <input type="date" id="hsDate" min="2026-07-19">
+          <input type="date" id="hsDate">
         </div>
         <div class="sp-field">
           <label for="hsSize">몇 명이 함께하나요</label>
@@ -107,7 +135,7 @@
           <span class="eyebrow">DEPARTING SOON</span>
           <h2>곧 출발하는 크루</h2>
         </div>
-        <a class="btn btn-ghost btn-sm" href="companion.html">전체 보기</a>
+        <a class="btn btn-ghost btn-sm" href="companion">전체 보기</a>
       </div>
       <div class="grid grid-3" id="homeSoon"></div>
       <p class="result-note mt4">카드의 좌석 수는 채팅방 인원이 아니라 <b>크루페이 확약결제를 마친 인원</b> 기준입니다. · 표시된 모집글은 서비스 소개용 예시예요.</p>
@@ -166,8 +194,8 @@
             </div>
           </div>
           <div class="flex mt6">
-            <a class="btn btn-primary" href="trust.html">신뢰 시스템 보기</a>
-            <a class="btn btn-ghost" href="trust.html#pay">크루페이 구조</a>
+            <a class="btn btn-primary" href="trust">신뢰 시스템 보기</a>
+            <a class="btn btn-ghost" href="trust#pay">크루페이 구조</a>
           </div>
         </div>
       </div>
@@ -182,34 +210,10 @@
           <span class="eyebrow">REGION GUIDE</span>
           <h2>어디부터 갈까요</h2>
         </div>
-        <a class="btn btn-ghost btn-sm" href="regions.html">지역별 보기</a>
+        <a class="btn btn-ghost btn-sm" href="regions">지역별 보기</a>
       </div>
-      <div class="grid grid-3">
-        <a class="region-card" href="regions.html#gobi">
-          <div class="region-scene" data-scene="gobi" role="img" aria-label="고비 사막을 걷는 낙타 카라반"></div>
-          <div class="region-body"><span class="rk">GOBI · 6–8일</span><h3>고비 사막</h3><p>욜링암 협곡부터 홍고린엘스 모래언덕까지, 몽골 여행의 정석 코스.</p></div>
-        </a>
-        <a class="region-card" href="regions.html#khuvsgul">
-          <div class="region-scene" data-scene="lake" role="img" aria-label="홉스골 호수 경로 그래픽"></div>
-          <div class="region-body"><span class="rk">KHUVSGUL · 5–7일</span><h3>홉스골 호수</h3><p>‘몽골의 바다’. 침엽수림과 맑은 물, 여름 피서와 겨울 얼음축제.</p></div>
-        </a>
-        <a class="region-card" href="regions.html#terelj">
-          <div class="region-scene" data-scene="terelj" role="img" aria-label="테를지 초원 승마"></div>
-          <div class="region-body"><span class="rk">TERELJ · 1–3일</span><h3>테를지 · 울란바토르</h3><p>도심에서 1시간 반, 첫 몽골에 가장 알맞은 입문 코스.</p></div>
-        </a>
-        <a class="region-card" href="regions.html#central">
-          <div class="region-scene" data-scene="central" role="img" aria-label="중부 어르헝 폭포"></div>
-          <div class="region-body"><span class="rk">CENTRAL · 5–7일</span><h3>중부 순환</h3><p>카라코룸의 역사, 쳉헤르 온천, 어르헝 폭포를 잇는 균형 루트.</p></div>
-        </a>
-        <a class="region-card" href="regions.html#altai">
-          <div class="region-scene" data-scene="altai" role="img" aria-label="알타이 경로 그래픽"></div>
-          <div class="region-body"><span class="rk">ALTAI · 9일+</span><h3>알타이 · 서부</h3><p>만년설과 독수리 사냥꾼의 땅. 경험자를 위한 심화 원정.</p></div>
-        </a>
-        <a class="region-card" href="regions.html#winter">
-          <div class="region-scene" data-scene="winter" role="img" aria-label="겨울 몽골 경로 그래픽"></div>
-          <div class="region-body"><span class="rk">WINTER · 12–3월</span><h3>겨울 몽골</h3><p>영하 20℃의 설원, 홉스골 얼음축제. 전혀 다른 몽골.</p></div>
-        </a>
-      </div>
+      <div class="grid grid-3" id="homeRegions"></div>
+      <p class="result-note mt4">몽골 전역 12개 지역 가이드가 준비되어 있어요. 원하는 곳이 목록에 없다면 검색창에서 직접 입력해 크루를 찾아보세요.</p>
     </div>
   </section>
 
@@ -223,7 +227,7 @@
           <span class="eyebrow">PRO CREW</span>
           <h2>인증된 업체, 조건이 보이는 견적</h2>
           <p>사업자·계약주체·취소 규정을 확인한 프로크루의 표준 견적으로 비교하세요. 광고는 언제나 광고라고 표시합니다.</p>
-          <a class="btn btn-light" href="partners.html">프로크루 비교하기</a>
+          <a class="btn btn-light" href="partners">프로크루 비교하기</a>
         </div>
       </div>
       <div class="grid grid-3">
@@ -243,6 +247,28 @@
     </div>
   </section>
 
+
+  <!-- 06.5 · 몽크루의 순간들 -->
+  <section class="section section-surface" id="moments">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">CREW MOMENTS</span>
+        <h2>몽크루가 만드는 순간들</h2>
+        <p class="lead">혼자였다면 스쳐 갔을 장면이, 크루와 함께라서 이야기가 됩니다.</p>
+      </div>
+      <div class="gallery">
+        <figure><img src="assets/img/gallery-night.webp" alt="밤하늘 아래 게르 앞에 모인 크루" loading="lazy"><figcaption>고비의 밤, 은하수 아래에서</figcaption></figure>
+        <figure><img src="assets/img/gallery-eagle.webp" alt="독수리 사냥꾼과 함께한 크루" loading="lazy"><figcaption>알타이 — 독수리 사냥꾼과의 만남</figcaption></figure>
+        <figure><img src="assets/img/gallery-horse.webp" alt="초원을 달리는 승마 크루" loading="lazy"><figcaption>테를지 초원 승마</figcaption></figure>
+        <figure><img src="assets/img/gallery-ger-meal.webp" alt="게르 안에서 함께하는 저녁 식사" loading="lazy"><figcaption>게르에서의 첫 저녁</figcaption></figure>
+        <figure><img src="assets/img/gallery-dunes.webp" alt="홍고린엘스 모래언덕 위의 네 사람" loading="lazy"><figcaption>홍고린엘스 능선 위에서</figcaption></figure>
+        <figure><img src="assets/img/gallery-campfire.webp" alt="캠프파이어에 둘러앉은 크루" loading="lazy"><figcaption>별빛 캠프파이어</figcaption></figure>
+        <figure><img src="assets/img/gallery-naadam.webp" alt="전통 축제를 관람하는 여행자들" loading="lazy"><figcaption>나담 축제의 오후</figcaption></figure>
+        <figure><img src="assets/img/gallery-rafting.webp" alt="강에서 래프팅을 즐기는 크루" loading="lazy"><figcaption>톨강 래프팅</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
   <!-- 07 · 크루라운지 -->
   <section class="section" id="lounge">
     <div class="container">
@@ -253,7 +279,7 @@
           <span class="eyebrow">CREW LOUNGE</span>
           <h2>여행이 끝나도, 이야기는 남아요</h2>
           <p>먼저 다녀온 크루의 후기와 질문·답변. 정보 글에는 작성일과 최신성이 함께 표시됩니다.</p>
-          <a class="btn btn-light" href="community.html">크루라운지 보기</a>
+          <a class="btn btn-light" href="community">크루라운지 보기</a>
         </div>
       </div>
       <div class="card card-pad post-list">
@@ -286,7 +312,7 @@
           <span class="eyebrow">YOUR TRIP</span>
           <h2>여행 일정이 정해졌다면,<br>크루부터 모아볼까요</h2>
           <p>5분이면 모집글 초안이 완성돼요. 좌석·비용·규칙까지 몽크루가 구조로 잡아드립니다.</p>
-          <a class="btn btn-primary" href="recruit.html">몽크루 모집하기</a>
+          <a class="btn btn-primary" href="recruit">몽크루 모집하기</a>
         </div>
       </div>
       <div class="wait-band" id="wait">
@@ -306,6 +332,7 @@
 
 </main>
 
+<!-- @FOOTER -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-top">
@@ -316,30 +343,35 @@
       <div>
         <h5>서비스</h5>
         <ul>
-          <li><a href="companion.html">몽크루 찾기</a></li>
-          <li><a href="recruit.html">몽크루 모집하기</a></li>
-          <li><a href="regions.html">지역 가이드</a></li>
-          <li><a href="guide.html">여행 준비 · 크루픽</a></li>
+          <li><a href="companion">몽크루 찾기</a></li>
+          <li><a href="recruit">몽크루 모집하기</a></li>
+          <li><a href="regions">지역 가이드</a></li>
+          <li><a href="guide">여행 준비 · 크루픽</a></li>
         </ul>
       </div>
       <div>
         <h5>신뢰와 안전</h5>
         <ul>
-          <li><a href="trust.html#temp">크루온도란</a></li>
-          <li><a href="trust.html#pay">크루페이 구조</a></li>
-          <li><a href="trust.html#refund">취소·환불 규정</a></li>
-          <li><a href="trust.html#report">신고 센터</a></li>
+          <li><a href="trust#temp">크루온도란</a></li>
+          <li><a href="trust#pay">크루페이 구조</a></li>
+          <li><a href="trust#refund">취소·환불 규정</a></li>
+          <li><a href="trust#report">신고 센터</a></li>
         </ul>
       </div>
       <div>
-        <h5>프로크루 · 회사</h5>
+        <h5>회원 · 회사</h5>
         <ul>
-          <li><a href="partners.html#join">프로크루 입점 안내</a></li>
-          <li><a href="partners.html#policy">광고·중립성 원칙</a></li>
-          <li><a href="community.html">크루라운지</a></li>
-          <li><a href="index.html#wait">베타 대기등록</a></li>
+          <li><a href="login">로그인 · 회원가입</a></li>
+          <li><a href="partners#join">프로크루 입점 안내</a></li>
+          <li><a href="community">크루라운지</a></li>
+          <li><a href="/#wait">베타 대기등록</a></li>
         </ul>
       </div>
+    </div>
+    <div class="footer-links">
+      <a href="terms">이용약관</a>
+      <a href="privacy"><b>개인정보처리방침</b></a>
+      <a href="trust#report">신고 센터</a>
     </div>
     <div class="footer-legal">
       <p>몽크루는 여행자 간, 그리고 여행자와 등록 여행업체 간의 연결을 돕는 플랫폼(통신판매중개)이며 여행상품 계약의 당사자가 아닙니다. 상품·일정·요금·환불 의무는 각 판매자(등록 여행업체)에게 있습니다.</p>
@@ -349,7 +381,11 @@
     </div>
   </div>
 </footer>
+<!-- /@FOOTER -->
 
+<!-- @BODY_SCRIPTS -->
+<script src="js/data.js"></script>
 <script src="js/main.js"></script>
+<!-- /@BODY_SCRIPTS -->
 </body>
 </html>

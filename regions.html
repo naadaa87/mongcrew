@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>지역 가이드 — 몽크루</title>
-<meta name="description" content="고비·홉스골·테를지·중부·알타이·겨울 몽골. 이동 거리와 난이도, 샤워·화장실 현실까지 담은 지역별 여행 가이드.">
+<meta name="description" content="테를지부터 미니고비, 남고비, 홉스골, 쳉헤르 온천, 알타이까지 — 한국 여행자들이 가장 많이 찾는 몽골 12곳의 현실 가이드.">
 <meta property="og:title" content="지역 가이드 — 몽크루">
-<meta property="og:description" content="고비·홉스골·테를지·중부·알타이·겨울 몽골. 이동 거리와 난이도, 샤워·화장실 현실까지 담은 지역별 여행 가이드.">
+<meta property="og:description" content="테를지부터 미니고비, 남고비, 홉스골, 쳉헤르 온천, 알타이까지 — 한국 여행자들이 가장 많이 찾는 몽골 12곳의 현실 가이드.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/img/og-image.jpg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32.png">
@@ -17,34 +17,67 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<!-- @HEAD_SCRIPTS -->
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script defer src="js/config.js"></script>
+<script defer src="js/auth.js"></script>
+<!-- /@HEAD_SCRIPTS -->
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
 
-<div class="ribbon">몽크루 비공개 베타를 준비 중입니다 · <a href="index.html#wait">대기등록</a>하고 오픈 소식과 얼리버드 혜택을 가장 먼저 받아보세요</div>
+<!-- @RIBBON -->
+<div class="ribbon">몽크루 비공개 베타를 준비 중입니다 · <a href="/#wait">대기등록</a>하고 오픈 소식과 얼리버드 혜택을 가장 먼저 받아보세요</div>
+<!-- /@RIBBON -->
 
+<!-- @HEADER -->
 <header class="site-header">
   <div class="container header-inner">
-    <a href="index.html" class="brand" aria-label="몽크루 홈">
+    <a href="/" class="brand" aria-label="몽크루 홈">
       <img class="b-logo" src="assets/logo/logo-ko-navy.png" alt="몽크루 MONGOLIA CREW">
     </a>
     <nav class="main-nav" id="mainNav" aria-label="주요 메뉴">
-      <a href="companion.html">몽크루 찾기</a>
-      <a href="regions.html" class="is-active">지역 가이드</a>
-      <a href="guide.html">여행 준비</a>
-      <a href="trust.html">신뢰·크루페이</a>
-      <a href="community.html">크루라운지</a>
-      <a href="partners.html">프로크루</a>
+      <a href="companion">몽크루 찾기</a>
+      <a href="regions" class="is-active">지역 가이드</a>
+      <a href="guide">여행 준비</a>
+      <a href="trust">신뢰·크루페이</a>
+      <a href="community">크루라운지</a>
+      <a href="partners">프로크루</a>
+      <div class="nav-auth-mobile">
+        <a data-auth-out href="login">로그인 · 회원가입</a>
+        <a data-auth-in hidden href="mypage">마이페이지</a>
+      </div>
     </nav>
     <div class="header-actions">
-      <a class="btn btn-ghost btn-sm" href="index.html#wait">대기등록</a>
-      <a class="btn btn-primary btn-sm" href="recruit.html">몽크루 모집하기</a>
+      <div data-auth-out class="flex" style="gap:8px;flex-wrap:nowrap">
+        <a class="btn btn-ghost btn-sm" href="login">로그인</a>
+        <a class="btn btn-primary btn-sm" href="recruit">몽크루 모집하기</a>
+      </div>
+      <div data-auth-in class="auth-in" hidden>
+        <a class="btn btn-primary btn-sm" href="recruit">몽크루 모집하기</a>
+        <div class="avatar-menu" data-auth-menu>
+          <button type="button" class="avatar-btn" data-auth-menu-btn aria-haspopup="true" aria-expanded="false" aria-label="내 계정 메뉴">
+            <span class="avatar"><img data-auth-avatar alt="" hidden><span data-auth-initial>M</span></span>
+            <span class="avatar-name" data-auth-name>크루</span>
+            <svg class="ac" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m4 6 4 4 4-4"/></svg>
+          </button>
+          <div class="avatar-drop">
+            <div class="who"><b data-auth-name>크루</b><span>몽크루 멤버 · 크루온도 36.5℃</span></div>
+            <div class="sep"></div>
+            <a href="mypage">마이페이지</a>
+            <a href="recruit">몽크루 모집하기</a>
+            <div class="sep"></div>
+            <button type="button" data-auth-signout>로그아웃</button>
+          </div>
+        </div>
+      </div>
     </div>
     <button class="nav-toggle" aria-expanded="false" aria-controls="mainNav" aria-label="메뉴 열기">
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5h14M3 10h14M3 15h14"/></svg>
     </button>
   </div>
 </header>
+<!-- /@HEADER -->
 
 <main id="main">
 
@@ -52,18 +85,19 @@
     <div class="container">
       <span class="eyebrow">REGION GUIDE</span>
       <h1>지역 가이드</h1>
-      <p class="lead">몽골은 ‘어디를 며칠’이 여행의 전부를 결정합니다. 이동 거리와 난이도까지 현실적으로 알려 드릴게요.</p>
+      <p class="lead">몽골은 '어디를 며칠'이 여행의 전부를 결정합니다. 한국 여행자들이 가장 많이 찾는 12곳의 이동 거리와 난이도, 샤워·화장실 현실까지 담았어요.</p>
     </div>
   </section>
 
   <section class="section-tight">
     <div class="container">
-      <div class="card card-pad mb6">
-        <b class="small" style="color:var(--steppe-dark)">울란바토르 기준 대략 이동 거리</b>
-        <div class="flex mt3" style="gap:8px">
+      <div class="card card-pad mb5">
+        <b class="small" style="color:var(--green-d)">울란바토르 기준 대략 이동 거리</b>
+        <div class="flex chip-scroll mt3" style="gap:8px">
           <span class="chip">테를지 <b class="mono">70km · 1.5h</b></span>
-          <span class="chip">엘승타사르하이 <b class="mono">280km</b></span>
+          <span class="chip">미니고비 <b class="mono">280km</b></span>
           <span class="chip">카라코룸 <b class="mono">360km</b></span>
+          <span class="chip">차강소브라가 <b class="mono">420km</b></span>
           <span class="chip">쳉헤르 온천 <b class="mono">450km</b></span>
           <span class="chip">홍고린엘스 <b class="mono">700km+</b></span>
           <span class="chip">홉스골 <b class="mono">700km · 국내선 1.5h</b></span>
@@ -72,126 +106,272 @@
         <p class="small muted mt3 mb0">비포장 구간이 많아 실제 소요 시간은 도로·날씨에 따라 크게 달라집니다. 하루 6–8시간 이동은 몽골에서 흔한 일정이에요.</p>
       </div>
 
+      <nav class="flex chip-scroll mb6" style="gap:8px" aria-label="지역 바로가기">
+        <a class="chip" href="#terelj">테를지 국립공원</a>
+        <a class="chip" href="#mini-gobi">미니고비</a>
+        <a class="chip" href="#gobi">남고비 사막</a>
+        <a class="chip" href="#tsagaan-suvarga">차강소브라가</a>
+        <a class="chip" href="#khuvsgul">홉스골 호수</a>
+        <a class="chip" href="#tsaatan">차탕족 순록마을</a>
+        <a class="chip" href="#kharkhorin">카라코룸</a>
+        <a class="chip" href="#tsenkher">쳉헤르 온천</a>
+        <a class="chip" href="#white-lake">테르힝 차강 호수</a>
+        <a class="chip" href="#ub">울란바토르 시내</a>
+        <a class="chip" href="#altai">알타이 타왕복드</a>
+        <a class="chip" href="#winter">겨울 몽골</a>
+      </nav>
+
       <div class="grid" style="gap:24px">
 
+        <article class="card" id="terelj" style="overflow:hidden">
+          <div class="region-scene" style="height:190px;background-image:url('assets/img/card-terelj.webp')" role="img" aria-label="테를지 국립공원 · 울란바토르"></div>
+          <div class="card-pad">
+            <span class="rk mono small muted">TERELJ · 수도권 · 1–3일 권장</span>
+            <h2 class="mt2">테를지 국립공원 · 울란바토르</h2>
+            <p>울란바토르에서 1시간 반, 몽골 여행의 시작점입니다. 거북바위와 아리야발 사원, 초원 승마 체험이 반나절이면 충분해서 도착 첫날이나 귀국 전날 일정으로 넣기 좋아요. 짧은 일정으로 몽골 분위기를 확실히 느낄 수 있는 입문 코스입니다.</p>
+            <div class="table-wrap">
+              <table class="tbl">
+                <tbody>
+                  <tr><td style="width:150px"><b>추천 일정</b></td><td>1박 2일 – 2박 3일 (고비·홉스골 코스 앞뒤에 결합)</td></tr>
+                  <tr><td style="width:150px"><b>이동 강도</b></td><td>하 — 포장도로 위주, 당일치기도 가능</td></tr>
+                  <tr><td style="width:150px"><b>경험</b></td><td>승마 · 거북바위 · 게르 숙박 입문</td></tr>
+                  <tr><td style="width:150px"><b>베스트 시즌</b></td><td>5–10월 · 겨울에도 접근 쉬움</td></tr>
+                  <tr><td style="width:150px"><b>주의</b></td><td>주말·성수기 한국인 단체로 캠프 조기 마감</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <a class="btn btn-tonal mt4" href="companion?route=terelj">이 지역 크루 보기</a>
+          </div>
+        </article>
+
+        <article class="card" id="mini-gobi" style="overflow:hidden">
+          <div class="region-scene" style="height:190px;background-image:url('assets/img/region-minigobi.webp')" role="img" aria-label="미니고비 · 엘승타사르하이"></div>
+          <div class="card-pad">
+            <span class="rk mono small muted">ELSEN TASARKHAI · 중부 · 2–4일 권장</span>
+            <h2 class="mt2">미니고비 · 엘승타사르하이</h2>
+            <p>'작은 고비'라 불리는 모래언덕 지대. 울란바토르에서 280km라 남고비까지 갈 시간이 없는 3–4일 일정 크루에게 가장 인기 있는 선택입니다. 사막·초원·낙타 체험을 하루에 압축해서 만날 수 있고, 카라코룸과 묶으면 알찬 단기 코스가 완성돼요.</p>
+            <div class="table-wrap">
+              <table class="tbl">
+                <tbody>
+                  <tr><td style="width:150px"><b>추천 일정</b></td><td>2박 3일 – 3박 4일 (카라코룸·테를지 결합 인기)</td></tr>
+                  <tr><td style="width:150px"><b>이동 강도</b></td><td>중 — 편도 4–5시간, 대부분 포장도로</td></tr>
+                  <tr><td style="width:150px"><b>경험</b></td><td>낙타 트레킹 · 모래언덕 일몰 · 유목민 게르</td></tr>
+                  <tr><td style="width:150px"><b>베스트 시즌</b></td><td>5–9월</td></tr>
+                  <tr><td style="width:150px"><b>주의</b></td><td>한낮 모래 온도 높음 · 남고비 대체재로 기대치 조절</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <a class="btn btn-tonal mt4" href="companion?route=mini-gobi">이 지역 크루 보기</a>
+          </div>
+        </article>
+
         <article class="card" id="gobi" style="overflow:hidden">
-          <div class="region-scene" style="height:170px" data-scene="gobi"></div>
+          <div class="region-scene" style="height:190px;background-image:url('assets/img/card-gobi.webp')" role="img" aria-label="남고비 사막"></div>
           <div class="card-pad">
             <span class="rk mono small muted">GOBI DESERT · 남부 · 6–8일 권장</span>
-            <h2 class="mt2">고비 사막</h2>
-            <p>몽골 여행의 정석이자 동행 수요가 가장 큰 코스. 백악의 절벽 차강 소브라가, 협곡 욜링암, 거대한 모래언덕 홍고린엘스, 공룡알 화석지 바양작이 하이라이트입니다. 이동이 길고 편의시설이 제한적인 만큼, 함께 갈 팀의 성향 합이 가장 중요한 지역이기도 합니다.</p>
+            <h2 class="mt2">남고비 사막</h2>
+            <p>몽골 여행의 정석이자 동행 수요가 가장 큰 코스. 백악의 절벽 차강소브라가, 협곡 욜링암, 거대한 모래언덕 홍고린엘스, 공룡알 화석지 바양작이 하이라이트입니다. 이동이 길고 편의시설이 제한적인 만큼, 함께 갈 팀의 성향 합이 가장 중요한 지역이기도 합니다.</p>
             <div class="table-wrap">
               <table class="tbl">
                 <tbody>
                   <tr><td style="width:150px"><b>추천 일정</b></td><td>6박 7일 – 7박 8일 (테를지 결합형 인기)</td></tr>
-                  <tr><td><b>이동 강도</b></td><td>상 — 하루 5–8시간 오프로드, 먼지 대비 필수</td></tr>
-                  <tr><td><b>샤워 · 화장실</b></td><td>샤워 가능 캠프 2–3곳 수준 · 이동 중 초원 화장실 구간</td></tr>
-                  <tr><td><b>베스트 시즌</b></td><td>6–9월 · 별 관측은 달 없는 주간</td></tr>
-                  <tr><td><b>주의</b></td><td>통신 두절 구간 김 · 낙타 트레킹 시 안전 수칙</td></tr>
+                  <tr><td style="width:150px"><b>이동 강도</b></td><td>상 — 하루 5–8시간 오프로드, 먼지 대비 필수</td></tr>
+                  <tr><td style="width:150px"><b>샤워 · 화장실</b></td><td>샤워 가능 캠프 2–3곳 수준 · 이동 중 초원 화장실 구간</td></tr>
+                  <tr><td style="width:150px"><b>베스트 시즌</b></td><td>6–9월 · 별 관측은 달 없는 주간</td></tr>
+                  <tr><td style="width:150px"><b>주의</b></td><td>통신 두절 구간 김 · 낙타 트레킹 시 안전 수칙</td></tr>
                 </tbody>
               </table>
             </div>
-            <a class="btn btn-tonal mt4" href="companion.html?route=gobi">고비 크루 보기</a>
+            <a class="btn btn-tonal mt4" href="companion?route=gobi">이 지역 크루 보기</a>
+          </div>
+        </article>
+
+        <article class="card" id="tsagaan-suvarga" style="overflow:hidden">
+          <div class="region-scene" style="height:190px;background-image:url('assets/img/region-suvarga.webp')" role="img" aria-label="차강소브라가"></div>
+          <div class="card-pad">
+            <span class="rk mono small muted">TSAGAAN SUVARGA · 남부 · 고비 코스 1일차</span>
+            <h2 class="mt2">차강소브라가</h2>
+            <p>수백만 년의 침식이 만든 30m 높이의 백악 절벽. 울란바토르에서 남고비로 내려가는 길의 첫 번째 감탄 포인트라 대부분의 고비 크루가 첫날 밤을 이 근처에서 보냅니다. 해 질 무렵 절벽이 붉게 물드는 순간이 백미예요.</p>
+            <div class="table-wrap">
+              <table class="tbl">
+                <tbody>
+                  <tr><td style="width:150px"><b>추천 일정</b></td><td>남고비 코스 1일차 숙박지로 포함</td></tr>
+                  <tr><td style="width:150px"><b>이동 강도</b></td><td>중 — 울란바토르에서 편도 6–7시간</td></tr>
+                  <tr><td style="width:150px"><b>경험</b></td><td>절벽 트레킹 · 일몰 · 첫 게르캠프 밤</td></tr>
+                  <tr><td style="width:150px"><b>베스트 시즌</b></td><td>6–9월</td></tr>
+                  <tr><td style="width:150px"><b>주의</b></td><td>절벽 가장자리 접근 주의 · 그늘 없음</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <a class="btn btn-tonal mt4" href="companion?route=tsagaan-suvarga">이 지역 크루 보기</a>
           </div>
         </article>
 
         <article class="card" id="khuvsgul" style="overflow:hidden">
-          <div class="region-scene" style="height:170px" data-scene="lake"></div>
+          <div class="region-scene" style="height:190px;background-image:url('assets/img/region-khuvsgul.webp')" role="img" aria-label="홉스골 호수"></div>
           <div class="card-pad">
             <span class="rk mono small muted">KHUVSGUL LAKE · 북부 · 5–7일 권장</span>
             <h2 class="mt2">홉스골 호수</h2>
-            <p>‘몽골의 바다’라 불리는 북부의 거대 담수호. 침엽수림과 맑은 물, 순록 유목민(차탄족) 문화를 만날 수 있습니다. 여름엔 피서지, 겨울엔 얼음축제의 무대가 됩니다. 육로는 왕복 이동만 3–4일이 걸려, 무릉까지 국내선을 타는 팀이 많습니다.</p>
+            <p>'몽골의 바다'라 불리는 북부의 거대 담수호. 침엽수림과 맑은 물, 호숫가 게르에서의 아침이 기다립니다. 여름엔 피서지, 겨울엔 얼음축제의 무대가 되죠. 육로는 왕복 이동만 3–4일이 걸려, 무릉까지 국내선을 타는 팀이 많습니다.</p>
             <div class="table-wrap">
               <table class="tbl">
                 <tbody>
                   <tr><td style="width:150px"><b>추천 일정</b></td><td>5박 6일 (국내선) · 7일+ (육로)</td></tr>
-                  <tr><td><b>이동 강도</b></td><td>중 — 국내선 이용 시 체력 부담 낮음</td></tr>
-                  <tr><td><b>경험</b></td><td>승마 · 보트 · 호숫가 게르 · 순록 방문</td></tr>
-                  <tr><td><b>베스트 시즌</b></td><td>6–8월 · 얼음축제는 2–3월</td></tr>
-                  <tr><td><b>주의</b></td><td>여름 성수기 국내선 조기 매진 · 밤 기온 낮음</td></tr>
+                  <tr><td style="width:150px"><b>이동 강도</b></td><td>중 — 국내선 이용 시 체력 부담 낮음</td></tr>
+                  <tr><td style="width:150px"><b>경험</b></td><td>승마 · 보트 · 카약 · 호숫가 게르</td></tr>
+                  <tr><td style="width:150px"><b>베스트 시즌</b></td><td>6–8월 · 얼음축제는 2–3월</td></tr>
+                  <tr><td style="width:150px"><b>주의</b></td><td>여름 성수기 국내선 조기 매진 · 밤 기온 낮음</td></tr>
                 </tbody>
               </table>
             </div>
-            <a class="btn btn-tonal mt4" href="companion.html?route=khuvsgul">홉스골 크루 보기</a>
+            <a class="btn btn-tonal mt4" href="companion?route=khuvsgul">이 지역 크루 보기</a>
           </div>
         </article>
 
-        <article class="card" id="terelj" style="overflow:hidden">
-          <div class="region-scene" style="height:170px" data-scene="terelj"></div>
+        <article class="card" id="tsaatan" style="overflow:hidden">
+          <div class="region-scene" style="height:190px;background-image:url('assets/img/region-tsaatan.webp')" role="img" aria-label="차탕족 순록마을"></div>
           <div class="card-pad">
-            <span class="rk mono small muted">TERELJ &amp; ULAANBAATAR · 1–3일 권장</span>
-            <h2 class="mt2">테를지 · 울란바토르</h2>
-            <p>울란바토르에서 차로 1시간 반, 첫 몽골에 가장 알맞은 입문 코스. 거북바위와 아리야발 사원, 초원 승마, 칭기스칸 기마상을 하루–이틀에 담을 수 있습니다. 도시에서는 간단 사원, 수흐바타르 광장, 자이승 전망대, 국립백화점·나랑톨 시장이 정석입니다.</p>
+            <span class="rk mono small muted">TSAATAN · 북부 타이가 · 홉스골 +2–3일</span>
+            <h2 class="mt2">차탕족 순록마을</h2>
+            <p>홉스골 북쪽 타이가 숲에는 순록과 함께 사는 유목민 차탕족이 있습니다. 차가 들어가지 못해 마지막 구간은 말을 타고 들어가야 하는, 몽골에서도 손꼽히는 오지 문화 체험이에요. 홉스골 일정에 2–3일을 더해 다녀오는 심화 코스입니다.</p>
             <div class="table-wrap">
               <table class="tbl">
                 <tbody>
-                  <tr><td style="width:150px"><b>추천 일정</b></td><td>당일 – 2박 3일 · 장거리 투어 앞뒤에 결합</td></tr>
-                  <tr><td><b>이동 강도</b></td><td>하 — 포장도로 비중 높음</td></tr>
-                  <tr><td><b>경험</b></td><td>승마 · 게르 1박 · 시티 투어</td></tr>
-                  <tr><td><b>주의</b></td><td>시내 소매치기 · 야간 이동 주의 · 승마 헬멧 착용</td></tr>
+                  <tr><td style="width:150px"><b>추천 일정</b></td><td>홉스골 코스에 +2–3일</td></tr>
+                  <tr><td style="width:150px"><b>이동 강도</b></td><td>상 — 승마 이동 왕복 6–10시간, 승마 경험 권장</td></tr>
+                  <tr><td style="width:150px"><b>경험</b></td><td>순록 유목민 방문 · 오르츠(천막) 숙박</td></tr>
+                  <tr><td style="width:150px"><b>베스트 시즌</b></td><td>6–8월 (계절따라 마을 위치 이동)</td></tr>
+                  <tr><td style="width:150px"><b>주의</b></td><td>방문 예절 사전 숙지 · 현지 가이드 필수</td></tr>
                 </tbody>
               </table>
             </div>
-            <a class="btn btn-tonal mt4" href="companion.html?route=terelj">테를지 크루 보기</a>
+            <a class="btn btn-tonal mt4" href="companion?route=tsaatan">이 지역 크루 보기</a>
           </div>
         </article>
 
-        <article class="card" id="central" style="overflow:hidden">
-          <div class="region-scene" style="height:170px" data-scene="central"></div>
+        <article class="card" id="tsenkher" style="overflow:hidden">
+          <div class="region-scene" style="height:190px;background-image:url('assets/img/region-tsenkher.webp')" role="img" aria-label="쳉헤르 온천"></div>
           <div class="card-pad">
-            <span class="rk mono small muted">CENTRAL MONGOLIA · 5–7일 권장</span>
-            <h2 class="mt2">중부 순환</h2>
-            <p>역사와 자연, 온천까지 균형 잡힌 루트. 몽골제국의 옛 수도 카라코룸(하르호린)과 에르덴조 사원, 쳉헤르 노천 온천, 어르헝 폭포를 잇습니다. 가는 길의 미니사막 엘승타사르하이에서는 사막·초원·낙타를 반나절에 맛볼 수 있어 짧은 일정의 대안으로도 인기입니다.</p>
+            <span class="rk mono small muted">TSENKHER HOT SPRING · 중부 · 코스 중 1박</span>
+            <h2 class="mt2">쳉헤르 온천</h2>
+            <p>초원 한가운데서 솟는 노천 온천. 며칠간의 오프로드 이동으로 쌓인 피로를 씻어내는 중부 순환 코스의 하이라이트입니다. 별을 보며 몸을 담그는 밤 온천은 크루들의 만족도가 가장 높은 순간으로 꼽혀요. 온수 샤워가 보장되는 귀한 숙박지이기도 합니다.</p>
             <div class="table-wrap">
               <table class="tbl">
                 <tbody>
-                  <tr><td style="width:150px"><b>추천 일정</b></td><td>5박 6일 안팎</td></tr>
-                  <tr><td><b>이동 강도</b></td><td>중 — 고비보다 이동 짧고 온천으로 회복</td></tr>
-                  <tr><td><b>경험</b></td><td>온천 · 사원 · 폭포 · 미니사막</td></tr>
-                  <tr><td><b>베스트 시즌</b></td><td>6–9월</td></tr>
+                  <tr><td style="width:150px"><b>추천 일정</b></td><td>중부 순환 코스 중 1박 (카라코룸 다음날 동선)</td></tr>
+                  <tr><td style="width:150px"><b>이동 강도</b></td><td>중 — 카라코룸에서 3–4시간</td></tr>
+                  <tr><td style="width:150px"><b>경험</b></td><td>노천 온천 · 별맞이 야간 입욕 · 온수 샤워</td></tr>
+                  <tr><td style="width:150px"><b>베스트 시즌</b></td><td>연중 (겨울 설경 온천도 인기)</td></tr>
+                  <tr><td style="width:150px"><b>주의</b></td><td>수영복 준비 · 성수기 캠프 예약 필수</td></tr>
                 </tbody>
               </table>
             </div>
-            <a class="btn btn-tonal mt4" href="companion.html?route=central">중부 크루 보기</a>
+            <a class="btn btn-tonal mt4" href="companion?route=tsenkher">이 지역 크루 보기</a>
+          </div>
+        </article>
+
+        <article class="card" id="kharkhorin" style="overflow:hidden">
+          <div class="region-scene" style="height:190px;background-image:url('assets/img/card-central.webp')" role="img" aria-label="카라코룸 · 어르헝 폭포"></div>
+          <div class="card-pad">
+            <span class="rk mono small muted">KHARKHORIN · ORKHON · 중부 · 4–6일 권장</span>
+            <h2 class="mt2">카라코룸 · 어르헝 폭포</h2>
+            <p>몽골제국의 옛 수도 하라호름(카라코룸)과 에르덴조 사원에서 역사를, 어르헝 계곡의 폭포와 초원에서 자연을 만나는 균형 잡힌 중부 루트입니다. 쳉헤르 온천, 테르힝 차강 호수와 묶어 5–6일 순환 코스로 도는 것이 정석이에요.</p>
+            <div class="table-wrap">
+              <table class="tbl">
+                <tbody>
+                  <tr><td style="width:150px"><b>추천 일정</b></td><td>4박 5일 – 5박 6일 (온천·호수 결합 순환)</td></tr>
+                  <tr><td style="width:150px"><b>이동 강도</b></td><td>중 — 비포장 구간 있으나 고비보다 완만</td></tr>
+                  <tr><td style="width:150px"><b>경험</b></td><td>에르덴조 사원 · 어르헝 폭포 · 야크 목장</td></tr>
+                  <tr><td style="width:150px"><b>베스트 시즌</b></td><td>6–9월 · 폭포 수량은 7–8월 최고</td></tr>
+                  <tr><td style="width:150px"><b>주의</b></td><td>사원 내부 복장 예절 · 폭포 주변 미끄러움</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <a class="btn btn-tonal mt4" href="companion?route=kharkhorin">이 지역 크루 보기</a>
+          </div>
+        </article>
+
+        <article class="card" id="white-lake" style="overflow:hidden">
+          <div class="region-scene" style="height:190px;background-image:url('assets/img/region-whitelake.webp')" role="img" aria-label="테르힝 차강 호수"></div>
+          <div class="card-pad">
+            <span class="rk mono small muted">TERKHIIN TSAGAAN · 중부 · 코스에 1–2박</span>
+            <h2 class="mt2">테르힝 차강 호수</h2>
+            <p>사화산 호르고 분화구와 맞닿은 '하얀 호수'. 중부 순환 코스의 가장 안쪽에 자리해 관광객이 적고, 호숫가 캠핑과 일몰이 아름답기로 유명합니다. 아침에 분화구를 오르고 오후엔 호숫가에서 쉬어 가는 하루가 이곳의 정석이에요.</p>
+            <div class="table-wrap">
+              <table class="tbl">
+                <tbody>
+                  <tr><td style="width:150px"><b>추천 일정</b></td><td>중부 순환 코스에 1–2박</td></tr>
+                  <tr><td style="width:150px"><b>이동 강도</b></td><td>중 — 쳉헤르에서 4–5시간</td></tr>
+                  <tr><td style="width:150px"><b>경험</b></td><td>호르고 분화구 트레킹 · 호숫가 캠핑 · 낚시</td></tr>
+                  <tr><td style="width:150px"><b>베스트 시즌</b></td><td>6–9월</td></tr>
+                  <tr><td style="width:150px"><b>주의</b></td><td>밤 기온 급강하 · 캠프 시설 소박한 편</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <a class="btn btn-tonal mt4" href="companion?route=white-lake">이 지역 크루 보기</a>
+          </div>
+        </article>
+
+        <article class="card" id="ub" style="overflow:hidden">
+          <div class="region-scene" style="height:190px;background-image:url('assets/img/region-ub.webp')" role="img" aria-label="울란바토르 시내"></div>
+          <div class="card-pad">
+            <span class="rk mono small muted">ULAANBAATAR · 수도 · 0.5–1일</span>
+            <h2 class="mt2">울란바토르 시내</h2>
+            <p>모든 몽골 여행이 시작되고 끝나는 도시. 수흐바타르 광장과 간단 사원, 국립박물관을 반나절에 돌고, 저녁엔 크루와 함께 몽골식 바비큐 허르헉이나 수제맥주를 즐기기 좋습니다. 캐시미어 쇼핑은 귀국 전날 일정으로 인기예요.</p>
+            <div class="table-wrap">
+              <table class="tbl">
+                <tbody>
+                  <tr><td style="width:150px"><b>추천 일정</b></td><td>도착일 오후 + 귀국 전날 (총 1일 안팎)</td></tr>
+                  <tr><td style="width:150px"><b>이동 강도</b></td><td>하 — 도보·택시 이동</td></tr>
+                  <tr><td style="width:150px"><b>경험</b></td><td>간단 사원 · 국립박물관 · 캐시미어 아울렛 · 허르헉</td></tr>
+                  <tr><td style="width:150px"><b>베스트 시즌</b></td><td>연중</td></tr>
+                  <tr><td style="width:150px"><b>주의</b></td><td>출퇴근 시간 교통 정체 · 소매치기 주의 구간</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <a class="btn btn-tonal mt4" href="companion?route=ub">이 지역 크루 보기</a>
           </div>
         </article>
 
         <article class="card" id="altai" style="overflow:hidden">
-          <div class="region-scene" style="height:170px" data-scene="altai"></div>
+          <div class="region-scene" style="height:190px;background-image:url('assets/img/region-altai.webp')" role="img" aria-label="알타이 타왕복드"></div>
           <div class="card-pad">
-            <span class="rk mono small muted">ALTAI · 서부 · 9일+ 권장</span>
-            <h2 class="mt2">알타이 · 서부</h2>
-            <p>몽골 최고봉 타왕복드의 만년설과 빙하, 카자흐 문화와 독수리 사냥꾼의 땅. 국내선 이동과 트레킹 체력이 필요한 심화 코스로, 한 번 다녀오면 다른 몽골이 쉬워 보인다는 말이 있을 정도입니다. 희소 일정이라 동행 매칭이 가장 귀한 지역이기도 합니다.</p>
+            <span class="rk mono small muted">ALTAI TAVAN BOGD · 서부 · 9일+ 권장</span>
+            <h2 class="mt2">알타이 타왕복드</h2>
+            <p>만년설 봉우리 다섯이 이어지는 몽골의 서쪽 끝. 카자흐 독수리 사냥꾼의 문화와 포타닌 빙하 트레킹을 만날 수 있는, 경험자를 위한 심화 원정지입니다. 울기까지 국내선으로 이동한 뒤에도 며칠의 오프로드가 이어지는 만큼 체력과 준비가 필요해요.</p>
             <div class="table-wrap">
               <table class="tbl">
                 <tbody>
-                  <tr><td style="width:150px"><b>추천 일정</b></td><td>9박 10일 이상</td></tr>
-                  <tr><td><b>이동 강도</b></td><td>최상 — 트레킹 · 고지대 · 국내선 필수</td></tr>
-                  <tr><td><b>베스트 시즌</b></td><td>7–9월 · 독수리 축제는 10월</td></tr>
-                  <tr><td><b>주의</b></td><td>경험 있는 가이드 · 장비 · 보험 보장 범위 확인</td></tr>
+                  <tr><td style="width:150px"><b>추천 일정</b></td><td>9박 10일 이상 (국내선 왕복 포함)</td></tr>
+                  <tr><td style="width:150px"><b>이동 강도</b></td><td>최상 — 고도 2,500m+ 트레킹, 체력 상급</td></tr>
+                  <tr><td style="width:150px"><b>경험</b></td><td>빙하 전망 트레킹 · 독수리 사냥꾼 · 카자흐 문화</td></tr>
+                  <tr><td style="width:150px"><b>베스트 시즌</b></td><td>7–9월 · 독수리 축제는 10월</td></tr>
+                  <tr><td style="width:150px"><b>주의</b></td><td>고산 적응 · 국경 지역 퍼밋 필요 (가이드 대행)</td></tr>
                 </tbody>
               </table>
             </div>
-            <a class="btn btn-tonal mt4" href="companion.html?route=altai">알타이 크루 보기</a>
+            <a class="btn btn-tonal mt4" href="companion?route=altai">이 지역 크루 보기</a>
           </div>
         </article>
 
         <article class="card" id="winter" style="overflow:hidden">
-          <div class="region-scene" style="height:170px" data-scene="winter"></div>
+          <div class="region-scene" style="height:190px;background-image:url('assets/img/region-winter.webp')" role="img" aria-label="겨울 몽골"></div>
           <div class="card-pad">
-            <span class="rk mono small muted">WINTER MONGOLIA · 12–3월 · 4–6일 권장</span>
+            <span class="rk mono small muted">WINTER MONGOLIA · 전역 · 12–3월</span>
             <h2 class="mt2">겨울 몽골</h2>
-            <p>영하 20℃의 설원, 홉스골 얼음축제, 몽골의 설날 차강사르. 혹한만 준비되면 여름과는 전혀 다른 몽골을 만납니다. 관광객이 적어 고요하고, 겨울 특화 상품과 프리미엄 차량·숙소를 중심으로 팀이 꾸려집니다.</p>
+            <p>영하 20℃의 설원 위 게르, 얼어붙은 홉스골에서 열리는 얼음축제, 그리고 관광객이 빠진 고요한 초원. 여름과는 전혀 다른 몽골입니다. 혹한 장비만 갖추면 이동 거리가 짧은 테를지·홉스골 중심으로 충분히 안전하게 다녀올 수 있어요.</p>
             <div class="table-wrap">
               <table class="tbl">
                 <tbody>
-                  <tr><td style="width:150px"><b>추천 일정</b></td><td>4박 5일 – 5박 6일</td></tr>
-                  <tr><td><b>이벤트</b></td><td>홉스골 얼음축제(2–3월) · 차강사르 · 독수리 축제(가을)</td></tr>
-                  <tr><td><b>주의</b></td><td>극한 방한장비 · 운항 변수 · 짧은 낮 시간</td></tr>
+                  <tr><td style="width:150px"><b>추천 일정</b></td><td>4박 5일 – 5박 6일 (테를지+시내 or 홉스골 축제)</td></tr>
+                  <tr><td style="width:150px"><b>이동 강도</b></td><td>중 — 거리보다 추위 관리가 관건</td></tr>
+                  <tr><td style="width:150px"><b>경험</b></td><td>얼음축제(2–3월) · 설원 승마 · 온천</td></tr>
+                  <tr><td style="width:150px"><b>베스트 시즌</b></td><td>얼음축제 2월 말–3월 초 · 설경 12–2월</td></tr>
+                  <tr><td style="width:150px"><b>주의</b></td><td>방한 의류 대여 가능 여부 확인 · 일몰 이른 점 감안</td></tr>
                 </tbody>
               </table>
             </div>
-            <a class="btn btn-tonal mt4" href="companion.html?route=winter">겨울 크루 보기</a>
+            <a class="btn btn-tonal mt4" href="companion?route=winter">이 지역 크루 보기</a>
           </div>
         </article>
       </div>
@@ -200,14 +380,20 @@
         <h3>일정별 코스 조합 추천</h3>
         <div class="table-wrap mt4">
           <table class="tbl">
-            <thead><tr><th>가용 일정</th><th>추천 조합</th><th>이런 분께</th></tr></thead>
+            <thead><tr><th>휴가 길이</th><th>추천 조합</th><th>이런 크루에게</th></tr></thead>
             <tbody>
-              <tr><td class="mono">3–4일</td><td>울란바토르 + 테를지 (+ 엘승타사르하이 당일)</td><td>첫 몽골 · 짧은 휴가</td></tr>
-              <tr><td class="mono">5–7일</td><td>중부 순환 또는 홉스골(국내선)</td><td>자연 + 온천 · 여유형</td></tr>
-              <tr><td class="mono">6–8일</td><td>남고비 정석 (+ 테를지)</td><td>몽골의 정수 · 별과 사막</td></tr>
-              <tr><td class="mono">10일+</td><td>고비 + 중부 종단 또는 알타이 원정</td><td>재방문 · 체력 자신</td></tr>
+              <tr><td><b>3–4일</b></td><td>테를지 + 울란바토르 · 또는 미니고비 1박</td><td>첫 몽골 · 주말 낀 짧은 휴가</td></tr>
+              <tr><td><b>4–5일</b></td><td>미니고비 + 카라코룸 · 또는 테를지 + 미니고비</td><td>사막 맛보기 + 부담 없는 이동</td></tr>
+              <tr><td><b>5–6일</b></td><td>중부 순환 (카라코룸 · 쳉헤르 온천 · 어르헝) · 또는 홉스골 국내선</td><td>온천 힐링 · 균형 잡힌 일정</td></tr>
+              <tr><td><b>6–8일</b></td><td>남고비 정석 (차강소브라가 → 욜링암 → 홍고린엘스 → 바양작)</td><td>몽골의 하이라이트를 제대로</td></tr>
+              <tr><td><b>9일+</b></td><td>고비 + 중부 대순환 · 홉스골 + 차탕족 · 알타이 원정</td><td>경험자 · 깊은 몽골</td></tr>
+              <tr><td><b>겨울</b></td><td>테를지 설경 + 홉스골 얼음축제 (2–3월)</td><td>전혀 다른 몽골이 궁금한 크루</td></tr>
             </tbody>
           </table>
+        </div>
+        <div class="flex mt5">
+          <a class="btn btn-primary" href="companion">이 코스로 가는 크루 찾기</a>
+          <a class="btn btn-ghost" href="recruit">내 일정으로 모집하기</a>
         </div>
       </div>
     </div>
@@ -215,6 +401,7 @@
 
 </main>
 
+<!-- @FOOTER -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-top">
@@ -225,30 +412,35 @@
       <div>
         <h5>서비스</h5>
         <ul>
-          <li><a href="companion.html">몽크루 찾기</a></li>
-          <li><a href="recruit.html">몽크루 모집하기</a></li>
-          <li><a href="regions.html">지역 가이드</a></li>
-          <li><a href="guide.html">여행 준비 · 크루픽</a></li>
+          <li><a href="companion">몽크루 찾기</a></li>
+          <li><a href="recruit">몽크루 모집하기</a></li>
+          <li><a href="regions">지역 가이드</a></li>
+          <li><a href="guide">여행 준비 · 크루픽</a></li>
         </ul>
       </div>
       <div>
         <h5>신뢰와 안전</h5>
         <ul>
-          <li><a href="trust.html#temp">크루온도란</a></li>
-          <li><a href="trust.html#pay">크루페이 구조</a></li>
-          <li><a href="trust.html#refund">취소·환불 규정</a></li>
-          <li><a href="trust.html#report">신고 센터</a></li>
+          <li><a href="trust#temp">크루온도란</a></li>
+          <li><a href="trust#pay">크루페이 구조</a></li>
+          <li><a href="trust#refund">취소·환불 규정</a></li>
+          <li><a href="trust#report">신고 센터</a></li>
         </ul>
       </div>
       <div>
-        <h5>프로크루 · 회사</h5>
+        <h5>회원 · 회사</h5>
         <ul>
-          <li><a href="partners.html#join">프로크루 입점 안내</a></li>
-          <li><a href="partners.html#policy">광고·중립성 원칙</a></li>
-          <li><a href="community.html">크루라운지</a></li>
-          <li><a href="index.html#wait">베타 대기등록</a></li>
+          <li><a href="login">로그인 · 회원가입</a></li>
+          <li><a href="partners#join">프로크루 입점 안내</a></li>
+          <li><a href="community">크루라운지</a></li>
+          <li><a href="/#wait">베타 대기등록</a></li>
         </ul>
       </div>
+    </div>
+    <div class="footer-links">
+      <a href="terms">이용약관</a>
+      <a href="privacy"><b>개인정보처리방침</b></a>
+      <a href="trust#report">신고 센터</a>
     </div>
     <div class="footer-legal">
       <p>몽크루는 여행자 간, 그리고 여행자와 등록 여행업체 간의 연결을 돕는 플랫폼(통신판매중개)이며 여행상품 계약의 당사자가 아닙니다. 상품·일정·요금·환불 의무는 각 판매자(등록 여행업체)에게 있습니다.</p>
@@ -258,7 +450,11 @@
     </div>
   </div>
 </footer>
+<!-- /@FOOTER -->
 
+<!-- @BODY_SCRIPTS -->
+<script src="js/data.js"></script>
 <script src="js/main.js"></script>
+<!-- /@BODY_SCRIPTS -->
 </body>
 </html>

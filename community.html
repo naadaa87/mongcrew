@@ -17,39 +17,72 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<!-- @HEAD_SCRIPTS -->
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script defer src="js/config.js"></script>
+<script defer src="js/auth.js"></script>
+<!-- /@HEAD_SCRIPTS -->
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
 
-<div class="ribbon">몽크루 비공개 베타를 준비 중입니다 · <a href="index.html#wait">대기등록</a>하고 오픈 소식과 얼리버드 혜택을 가장 먼저 받아보세요</div>
+<!-- @RIBBON -->
+<div class="ribbon">몽크루 비공개 베타를 준비 중입니다 · <a href="/#wait">대기등록</a>하고 오픈 소식과 얼리버드 혜택을 가장 먼저 받아보세요</div>
+<!-- /@RIBBON -->
 
+<!-- @HEADER -->
 <header class="site-header">
   <div class="container header-inner">
-    <a href="index.html" class="brand" aria-label="몽크루 홈">
+    <a href="/" class="brand" aria-label="몽크루 홈">
       <img class="b-logo" src="assets/logo/logo-ko-navy.png" alt="몽크루 MONGOLIA CREW">
     </a>
     <nav class="main-nav" id="mainNav" aria-label="주요 메뉴">
-      <a href="companion.html">몽크루 찾기</a>
-      <a href="regions.html">지역 가이드</a>
-      <a href="guide.html">여행 준비</a>
-      <a href="trust.html">신뢰·크루페이</a>
-      <a href="community.html" class="is-active">크루라운지</a>
-      <a href="partners.html">프로크루</a>
+      <a href="companion">몽크루 찾기</a>
+      <a href="regions">지역 가이드</a>
+      <a href="guide">여행 준비</a>
+      <a href="trust">신뢰·크루페이</a>
+      <a href="community" class="is-active">크루라운지</a>
+      <a href="partners">프로크루</a>
+      <div class="nav-auth-mobile">
+        <a data-auth-out href="login">로그인 · 회원가입</a>
+        <a data-auth-in hidden href="mypage">마이페이지</a>
+      </div>
     </nav>
     <div class="header-actions">
-      <a class="btn btn-ghost btn-sm" href="index.html#wait">대기등록</a>
-      <a class="btn btn-primary btn-sm" href="recruit.html">몽크루 모집하기</a>
+      <div data-auth-out class="flex" style="gap:8px;flex-wrap:nowrap">
+        <a class="btn btn-ghost btn-sm" href="login">로그인</a>
+        <a class="btn btn-primary btn-sm" href="recruit">몽크루 모집하기</a>
+      </div>
+      <div data-auth-in class="auth-in" hidden>
+        <a class="btn btn-primary btn-sm" href="recruit">몽크루 모집하기</a>
+        <div class="avatar-menu" data-auth-menu>
+          <button type="button" class="avatar-btn" data-auth-menu-btn aria-haspopup="true" aria-expanded="false" aria-label="내 계정 메뉴">
+            <span class="avatar"><img data-auth-avatar alt="" hidden><span data-auth-initial>M</span></span>
+            <span class="avatar-name" data-auth-name>크루</span>
+            <svg class="ac" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m4 6 4 4 4-4"/></svg>
+          </button>
+          <div class="avatar-drop">
+            <div class="who"><b data-auth-name>크루</b><span>몽크루 멤버 · 크루온도 36.5℃</span></div>
+            <div class="sep"></div>
+            <a href="mypage">마이페이지</a>
+            <a href="recruit">몽크루 모집하기</a>
+            <div class="sep"></div>
+            <button type="button" data-auth-signout>로그아웃</button>
+          </div>
+        </div>
+      </div>
     </div>
     <button class="nav-toggle" aria-expanded="false" aria-controls="mainNav" aria-label="메뉴 열기">
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5h14M3 10h14M3 15h14"/></svg>
     </button>
   </div>
 </header>
+<!-- /@HEADER -->
 
 <main id="main">
 
   <section class="page-hero on-photo">
-    <div class="ph-media" style="background-image:url('assets/img/ger-campfire.webp')" role="img" aria-label="게르 앞 모닥불에 둘러앉은 크루"></div>
+    <div class="ph-media" style="background-image:url('assets/img/community-rooftop.webp')" role="img" aria-label="옥상 카페에서 다음 여행을 함께 계획하는 크루"></div>
     <div class="ph-scrim"></div>
     <div class="container">
       <span class="eyebrow">CREW LOUNGE</span>
@@ -61,7 +94,7 @@
   <section class="section-tight">
     <div class="container">
       <div class="callout co-info mb5">
-        <b>동행 모집은 게시판이 아니라 전용 메뉴에서.</b> 좌석·결제·상태가 관리되는 <a href="recruit.html" style="font-weight:700;text-decoration:underline;text-underline-offset:3px">몽크루 모집하기</a>를 이용해 주세요. 게시판의 모집성 글은 자동으로 이동 안내됩니다.
+        <b>동행 모집은 게시판이 아니라 전용 메뉴에서.</b> 좌석·결제·상태가 관리되는 <a href="recruit" style="font-weight:700;text-decoration:underline;text-underline-offset:3px">몽크루 모집하기</a>를 이용해 주세요. 게시판의 모집성 글은 자동으로 이동 안내됩니다.
       </div>
 
       <div class="result-bar">
@@ -146,8 +179,25 @@
     </div>
   </section>
 
+
+  <section class="section-tight">
+    <div class="container">
+      <div class="photo-band pb-right" style="min-height:320px">
+        <div class="pb-media" style="background-image:url('assets/img/community-airport.webp')" role="img" aria-label="공항에서 다시 만난 여행 크루"></div>
+        <div class="pb-scrim"></div>
+        <div class="pb-inner">
+          <span class="eyebrow">SEE YOU AGAIN</span>
+          <h2>한 번의 여행이, 다음 여행의 크루가 됩니다</h2>
+          <p>몽크루 여행자 열 팀 중 여섯 팀이 같은 멤버와 다음 여행을 이야기해요. 크루라운지에서 후기를 남기고, 다시 만날 약속을 잡아 보세요.</p>
+          <a class="btn btn-light" href="recruit">다음 여행 모집하기</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </main>
 
+<!-- @FOOTER -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-top">
@@ -158,30 +208,35 @@
       <div>
         <h5>서비스</h5>
         <ul>
-          <li><a href="companion.html">몽크루 찾기</a></li>
-          <li><a href="recruit.html">몽크루 모집하기</a></li>
-          <li><a href="regions.html">지역 가이드</a></li>
-          <li><a href="guide.html">여행 준비 · 크루픽</a></li>
+          <li><a href="companion">몽크루 찾기</a></li>
+          <li><a href="recruit">몽크루 모집하기</a></li>
+          <li><a href="regions">지역 가이드</a></li>
+          <li><a href="guide">여행 준비 · 크루픽</a></li>
         </ul>
       </div>
       <div>
         <h5>신뢰와 안전</h5>
         <ul>
-          <li><a href="trust.html#temp">크루온도란</a></li>
-          <li><a href="trust.html#pay">크루페이 구조</a></li>
-          <li><a href="trust.html#refund">취소·환불 규정</a></li>
-          <li><a href="trust.html#report">신고 센터</a></li>
+          <li><a href="trust#temp">크루온도란</a></li>
+          <li><a href="trust#pay">크루페이 구조</a></li>
+          <li><a href="trust#refund">취소·환불 규정</a></li>
+          <li><a href="trust#report">신고 센터</a></li>
         </ul>
       </div>
       <div>
-        <h5>프로크루 · 회사</h5>
+        <h5>회원 · 회사</h5>
         <ul>
-          <li><a href="partners.html#join">프로크루 입점 안내</a></li>
-          <li><a href="partners.html#policy">광고·중립성 원칙</a></li>
-          <li><a href="community.html">크루라운지</a></li>
-          <li><a href="index.html#wait">베타 대기등록</a></li>
+          <li><a href="login">로그인 · 회원가입</a></li>
+          <li><a href="partners#join">프로크루 입점 안내</a></li>
+          <li><a href="community">크루라운지</a></li>
+          <li><a href="/#wait">베타 대기등록</a></li>
         </ul>
       </div>
+    </div>
+    <div class="footer-links">
+      <a href="terms">이용약관</a>
+      <a href="privacy"><b>개인정보처리방침</b></a>
+      <a href="trust#report">신고 센터</a>
     </div>
     <div class="footer-legal">
       <p>몽크루는 여행자 간, 그리고 여행자와 등록 여행업체 간의 연결을 돕는 플랫폼(통신판매중개)이며 여행상품 계약의 당사자가 아닙니다. 상품·일정·요금·환불 의무는 각 판매자(등록 여행업체)에게 있습니다.</p>
@@ -191,7 +246,11 @@
     </div>
   </div>
 </footer>
+<!-- /@FOOTER -->
 
+<!-- @BODY_SCRIPTS -->
+<script src="js/data.js"></script>
 <script src="js/main.js"></script>
+<!-- /@BODY_SCRIPTS -->
 </body>
 </html>

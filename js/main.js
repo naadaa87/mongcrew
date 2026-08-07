@@ -26,21 +26,41 @@
   /* ---------- mobile nav ---------- */
   const navBtn = $(".nav-toggle");
   if (navBtn) {
+    const nav = $(".main-nav");
+    const closeNav = () => {
+      if (nav && nav.classList.contains("open")) {
+        nav.classList.remove("open");
+        navBtn.setAttribute("aria-expanded", "false");
+      }
+    };
     navBtn.addEventListener("click", () => {
-      const nav = $(".main-nav");
       const open = nav.classList.toggle("open");
       navBtn.setAttribute("aria-expanded", open ? "true" : "false");
     });
+    document.addEventListener("click", (e) => {
+      if (!nav.contains(e.target) && !navBtn.contains(e.target)) closeNav();
+    });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeNav(); });
   }
 
   /* ---------- 카드 비주얼: 사진 우선 + 브랜드 라인아트 폴백 ---------- */
   const PHOTOS = {
     gobi: "assets/img/card-gobi.webp",
+    caravan: "assets/img/region-gobi-caravan.webp",
     night: "assets/img/card-night.webp",
     terelj: "assets/img/card-terelj.webp",
     central: "assets/img/card-central.webp",
     steppe: "assets/img/card-steppe.webp",
-    city: "assets/img/card-city.webp"
+    city: "assets/img/card-city.webp",
+    minigobi: "assets/img/region-minigobi.webp",
+    khuvsgul: "assets/img/region-khuvsgul.webp",
+    tsenkher: "assets/img/region-tsenkher.webp",
+    ub: "assets/img/region-ub.webp",
+    altai: "assets/img/region-altai.webp",
+    tsaatan: "assets/img/region-tsaatan.webp",
+    whitelake: "assets/img/region-whitelake.webp",
+    suvarga: "assets/img/region-suvarga.webp",
+    winter: "assets/img/region-winter.webp"
   };
   function lineart(key) {
     const themes = {
@@ -107,73 +127,9 @@
     upd();
   });
 
-  /* ---------- 동행 데이터 (예시) ---------- */
-  const TRIPS = [
-    {
-      id: "gobi-0810", title: "남고비 정석 코스 — 욜링암·홍고린엘스·바양작", scene: "gobi", route: "gobi",
-      start: "2026-08-10", label: "8/10(월) 출발 · 6박 7일", month: 8,
-      cur: 4, goal: 6, priceNow: 118, priceGoal: 103, pay: "safe",
-      temp: 40.8, badges: ["본인확인", "여행완료 2회"], resp: "응답 평균 2시간",
-      group: "누구나", tags: ["비흡연", "업체 확정", "푸르공"], theme: ["first"], hot: 96
-    },
-    {
-      id: "khv-0821", title: "홉스골 5박 6일 — 몽골의 바다, 여성전용 팀", scene: "lake", route: "khuvsgul",
-      start: "2026-08-21", label: "8/21(금) 출발 · 5박 6일", month: 8,
-      cur: 2, goal: 4, priceNow: 132, priceGoal: 112, pay: "safe",
-      temp: 39.4, badges: ["본인확인", "여행완료 1회"], resp: "응답 평균 1시간",
-      group: "여성전용", tags: ["비흡연", "게르 2인실", "업체 견적 중"], theme: [], hot: 88
-    },
-    {
-      id: "star-0909", title: "달 없는 주간 · 별 관측 특화 고비+중부 7박 8일", scene: "night", route: "gobi",
-      start: "2026-09-09", label: "9/9(수) 출발 · 7박 8일", month: 9,
-      cur: 5, goal: 6, priceNow: 108, priceGoal: 98, pay: "safe",
-      temp: 41.2, badges: ["본인확인", "여행완료 3회", "검증 리더"], resp: "응답 평균 40분",
-      group: "누구나", tags: ["사진·별", "삼각대 환영", "업체 확정"], theme: ["star", "photo"], hot: 99
-    },
-    {
-      id: "first-0801", title: "첫 몽골 입문 — 테를지+울란바토르 3박 4일", scene: "terelj", route: "terelj",
-      start: "2026-08-01", label: "8/1(토) 출발 · 3박 4일", month: 8,
-      cur: 2, goal: 4, priceNow: 62, priceGoal: 54, pay: "direct",
-      temp: 36.5, badges: ["본인확인"], resp: "신규 리더",
-      group: "커플 1팀 가능", tags: ["첫 몽골", "승마", "주말"], theme: ["first", "horse"], hot: 72
-    },
-    {
-      id: "cent-0828", title: "중부 순환 — 카라코룸·쳉헤르 온천·어르헝 폭포 5박 6일", scene: "central", route: "central",
-      start: "2026-08-28", label: "8/28(금) 출발 · 5박 6일", month: 8,
-      cur: 3, goal: 6, priceNow: 96, priceGoal: 82, pay: "tbd",
-      temp: 38.1, badges: ["본인확인", "여행완료 1회"], resp: "응답 평균 5시간",
-      group: "누구나", tags: ["온천", "역사", "업체 미정"], theme: [], hot: 64
-    },
-    {
-      id: "gobi-0724", title: "남고비+테를지 6박 7일 — 마지막 1석", scene: "gobi", route: "gobi",
-      start: "2026-07-24", label: "7/24(금) 출발 · 6박 7일", month: 7,
-      cur: 5, goal: 6, priceNow: 114, priceGoal: 107, pay: "safe",
-      temp: 39.8, badges: ["본인확인", "여행완료 2회"], resp: "응답 평균 1시간",
-      group: "누구나", tags: ["비흡연", "MIAT 새벽편", "업체 확정 8인 예약"], theme: [], hot: 100
-    },
-    {
-      id: "altai-0915", title: "알타이 타왕복드 9박 10일 — 경험자 심화 원정", scene: "altai", route: "altai",
-      start: "2026-09-15", label: "9/15(화) 출발 · 9박 10일", month: 9,
-      cur: 3, goal: 5, priceNow: 236, priceGoal: 214, pay: "safe",
-      temp: 42.0, badges: ["본인확인", "여행완료 5회", "검증 리더"], resp: "응답 평균 3시간",
-      group: "누구나", tags: ["트레킹", "국내선 포함", "체력 상"], theme: ["trek"], hot: 58
-    },
-    {
-      id: "win-0305", title: "겨울 홉스골 얼음축제 4박 5일 — 2027년 3월", scene: "winter", route: "winter",
-      start: "2027-03-05", label: "27/3/5(금) 출발 · 4박 5일", month: 3,
-      cur: 1, goal: 4, priceNow: 148, priceGoal: 118, pay: "tbd",
-      temp: 37.9, badges: ["본인확인"], resp: "응답 평균 4시간",
-      group: "누구나", tags: ["겨울", "얼음축제", "방한 필수"], theme: ["winter"], hot: 41
-    },
-    {
-      id: "photo-0904", title: "초원 감성 사진팀 — 엘승타사르하이+테를지 4박 5일", scene: "steppe", route: "central",
-      start: "2026-09-04", label: "9/4(금) 출발 · 4박 5일", month: 9,
-      cur: 3, goal: 5, priceNow: 84, priceGoal: 74, pay: "safe",
-      temp: 38.6, badges: ["본인확인", "여행완료 1회"], resp: "응답 평균 2시간",
-      group: "여성전용", tags: ["사진·별", "미니고비", "비흡연"], theme: ["photo", "star"], hot: 77
-    }
-  ];
-  window.MM_TRIPS = TRIPS;
+  /* ---------- 동행 데이터 — js/data.js 에서 관리 ---------- */
+  const TRIPS = window.MM_TRIPS || [];
+  const REGIONS = window.MM_REGIONS || [];
 
   function dday(iso) {
     const today = new Date(); today.setHours(0, 0, 0, 0);
@@ -201,7 +157,7 @@
       <div class="trip-scene"${sceneParts(t.scene).attr}>${sceneParts(t.scene).inner}${st}<span class="match">${ddayTxt}</span></div>
       <div class="trip-body">
         <span class="trip-date mono">${t.label}</span>
-        <h3 class="trip-title"><a class="stretch" href="companion-detail.html">${t.title}</a></h3>
+        <h3 class="trip-title"><a class="stretch" href="companion-detail">${t.title}</a></h3>
         <div class="seatbar ${urgent ? "urgent" : ""}">
           <div class="track"><div class="fill" style="width:${pct}%"></div></div>
           <div class="lab"><span>확정 <strong>${t.cur}</strong> / 목표 ${t.goal}</span><span><strong>${remain}석</strong> 남음</span></div>
@@ -225,6 +181,18 @@
   }
   window.mmTripCard = tripCard;
 
+  /* home: 지역 카드 (data.js의 home:true 지역) */
+  const homeRegions = $("#homeRegions");
+  if (homeRegions) {
+    homeRegions.innerHTML = REGIONS.filter((r) => r.home).map((r) => `
+      <a class="region-card" href="regions#${r.id}">
+        <div class="region-scene" style="background-image:url('assets/img/${r.img}')" role="img" aria-label="${r.name}"></div>
+        <div class="region-body"><span class="rk">${r.en} · ${r.days}</span><h3>${r.name}</h3><p>${r.short}</p></div>
+      </a>`).join("");
+  }
+  const hsDate = $("#hsDate");
+  if (hsDate) hsDate.min = new Date().toISOString().slice(0, 10);
+
   /* home: 출발 임박 3장 */
   const homeSoon = $("#homeSoon");
   if (homeSoon) {
@@ -237,13 +205,31 @@
   /* ---------- companion browse page ---------- */
   const listEl = $("#tripList");
   if (listEl) {
-    const state = { route: "all", seat: "all", pay: false, group: "all", theme: "all", month: "all", sort: "reco" };
+    const state = { route: "all", seat: "all", pay: false, group: "all", theme: "all", month: "all", sort: "reco", q: "" };
     const params = new URLSearchParams(location.search);
     if (params.get("route")) state.route = params.get("route");
     if (params.get("month")) state.month = params.get("month");
+    if (params.get("q")) state.q = params.get("q").trim();
+
+    /* 지역 칩을 data.js 기준으로 생성 */
+    const routeChips = $("#routeChips");
+    if (routeChips) {
+      routeChips.innerHTML =
+        '<button class="chip" data-f="route:all" aria-pressed="false">전체</button>' +
+        REGIONS.map((r) =>
+          `<button class="chip" data-f="route:${r.id}" aria-pressed="false">${r.name.split(" · ")[0]}</button>`
+        ).join("");
+    }
+    const qClear = $("#qClear");
+    if (qClear) qClear.addEventListener("click", () => { state.q = ""; apply(); });
 
     function apply() {
       let r = TRIPS.slice();
+      if (state.q) {
+        const kw = state.q.toLowerCase();
+        const rname = (id) => { const g = REGIONS.find((x) => x.id === id); return g ? g.name : ""; };
+        r = r.filter((t) => (t.title + " " + t.tags.join(" ") + " " + rname(t.route)).toLowerCase().includes(kw));
+      }
       if (state.route !== "all") r = r.filter((t) => t.route === state.route);
       if (state.month !== "all") r = r.filter((t) => String(t.month) === String(state.month));
       if (state.seat === "1") r = r.filter((t) => t.goal - t.cur === 1);
@@ -256,6 +242,8 @@
       if (state.sort === "trust") r.sort((a, b) => b.temp - a.temp);
       if (state.sort === "new") r.sort((a, b) => (b.start > a.start ? 1 : -1));
       $("#resultCount").textContent = r.length;
+      const qb = $("#qBadge");
+      if (qb) { qb.hidden = !state.q; if (state.q) qb.querySelector("b").textContent = state.q; }
       listEl.innerHTML = r.length
         ? r.map(tripCard).join("")
         : `<div class="empty-state" style="grid-column:1/-1">
@@ -267,7 +255,7 @@
              </div>
            </div>`;
       $$("[data-reset]").forEach((b) => b.addEventListener("click", () => {
-        state.route = "all"; state.seat = "all"; state.pay = false; state.group = "all"; state.theme = "all"; state.month = "all";
+        state.route = "all"; state.seat = "all"; state.pay = false; state.group = "all"; state.theme = "all"; state.month = "all"; state.q = ""; const qb = $("#qBadge"); if (qb) qb.hidden = true;
         syncChips(); apply();
       }));
     }
@@ -300,11 +288,37 @@
       const route = $("#hsRoute").value;
       const date = $("#hsDate").value;
       const q = new URLSearchParams();
-      if (route !== "all") q.set("route", route);
+      if (route === "__custom") {
+        const kw = ($("#hsCustom") && $("#hsCustom").value.trim()) || "";
+        if (kw) q.set("q", kw);
+      } else if (route && route !== "all" && route !== "") {
+        q.set("route", route);
+      }
       if (date) q.set("month", String(new Date(date + "T00:00:00").getMonth() + 1));
-      location.href = "companion.html" + (q.toString() ? "?" + q.toString() : "");
+      location.href = "companion" + (q.toString() ? "?" + q.toString() : "");
     });
   }
+
+  /* ---------- 지역 select 자동 채우기 + "직접 입력" 토글 ---------- */
+  $$("select[data-region-select]").forEach((sel) => {
+    const withAll = sel.dataset.regionSelect !== "no-all";
+    let html = withAll ? '<option value="">전체 지역</option>' : "";
+    html += (window.MM_REGION_OPTIONS || []).map((o) => `<option value="${o.value}">${o.label}</option>`).join("");
+    html += '<option value="__custom">직접 입력…</option>';
+    sel.innerHTML = html;
+  });
+  $$("[data-custom-toggle]").forEach((sel) => {
+    const slot = document.getElementById(sel.dataset.customToggle);
+    if (!slot) return;
+    const sync = () => {
+      const on = sel.value === "__custom";
+      slot.classList.toggle("show", on);
+      const inp = slot.querySelector("input");
+      if (on && inp) inp.focus();
+    };
+    sel.addEventListener("change", sync);
+    sync();
+  });
 
   /* ---------- waitlist / demo forms ---------- */
   $$("form[data-demo]").forEach((f) => {
@@ -347,7 +361,25 @@
     let step = 1; const MAX = 5;
     const panels = $$(".wiz-panel", wiz);
     const marks = $$(".wiz-steps .ws", wiz);
-    const P = { route: "고비 6박 7일", label: "출발일을 선택하세요", cur: 1, goal: 6, price: "", group: "누구나", tags: [] };
+    const P = { title: "", region: "", cur: 1, goal: 6, group: "누구나" };
+
+    /* 지역 id → 카드 배경 자동 매칭 */
+    const ROUTE_SCENE = {
+      "terelj": "terelj", "mini-gobi": "minigobi", "gobi": "gobi", "khuvsgul": "khuvsgul",
+      "tsenkher": "tsenkher", "kharkhorin": "central", "ub": "ub", "altai": "altai",
+      "tsaatan": "tsaatan", "white-lake": "whitelake", "tsagaan-suvarga": "suvarga", "winter": "winter"
+    };
+    const wzRouteSel = $("#wzRoute");
+    if (wzRouteSel) wzRouteSel.addEventListener("change", () => {
+      const s = ROUTE_SCENE[wzRouteSel.value];
+      if (s) $("#wzScene").value = s;
+    });
+    function regionName() {
+      if (!wzRouteSel) return "";
+      if (wzRouteSel.value === "__custom") return ($("#wzCustom").value || "").trim() || "직접 입력 지역";
+      const g = REGIONS.find((r) => r.id === wzRouteSel.value);
+      return g ? g.name : "";
+    }
 
     function money() {
       const fixed = +($("#wzFixed").value || 0);
@@ -368,7 +400,8 @@
       // live preview
       const dateV = $("#wzDate").value;
       const days = $("#wzDays").value;
-      P.route = $("#wzRoute").value;
+      P.region = regionName();
+      P.title = ($("#wzTitle").value || "").trim() || (P.region ? P.region + " 크루 모집" : "제목을 입력해 주세요");
       P.goal = +$("#wzGoal").value || 6;
       P.cur = +$("#wzCur").value || 1;
       P.group = $("#wzGroup").value;
@@ -383,12 +416,12 @@
           <div class="trip-scene"${sceneParts($("#wzScene").value).attr}>${sceneParts($("#wzScene").value).inner}<span class="st st-open">모집중</span></div>
           <div class="trip-body">
             <span class="trip-date mono">${label}</span>
-            <h3 class="trip-title">${P.route}</h3>
+            <h3 class="trip-title">${P.title}</h3>
             <div class="seatbar"><div class="track"><div class="fill" style="width:${pct}%"></div></div>
               <div class="lab"><span>확정 <strong>${P.cur}</strong> / 목표 ${P.goal}</span><span><strong>${remain}석</strong> 남음</span></div></div>
             <div class="trust-line"><span class="temp">36.5℃</span><span class="tbadge">본인확인</span><span class="small muted">· 새 리더</span></div>
             ${m ? `<div class="price-row"><span class="price-now">${m.now}만원</span><span class="price-note">현재 ${P.cur}인 기준</span><span class="price-goal">완성 시 ${m.per}만원</span></div>` : ""}
-            <div class="trip-foot">${payLabel($("#wzPay").value)}<div class="trip-tags"><span class="tag">${P.group}</span></div></div>
+            <div class="trip-foot">${payLabel($("#wzPay").value)}<div class="trip-tags"><span class="tag">${P.region || "지역 미정"}</span><span class="tag">${P.group}</span></div></div>
           </div>
         </article>`;
     }
@@ -406,6 +439,16 @@
     $("#wzPrev").addEventListener("click", () => { if (step > 1) { step--; paint(); } });
     $$("#wizard input,#wizard select").forEach((el) => el.addEventListener("input", paint));
     paint();
+  }
+
+  /* ---------- 상세 페이지 고정 카드 접기/펼치기 (모바일) ---------- */
+  const decideCard = $("#decideCard");
+  if (decideCard) {
+    const handle = $(".dc-handle", decideCard);
+    if (handle) handle.addEventListener("click", () => {
+      const open = decideCard.classList.toggle("open");
+      handle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
   }
 
   /* ---------- footer year ---------- */

@@ -1,8 +1,22 @@
-/assets/*
+# Cloudflare Pages 캐시·보안 정책
+# 규칙이 겹치면 아래(더 구체적인) 규칙이 우선 적용됩니다.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/assets/logo/*
   Cache-Control: public, max-age=31536000, immutable
+
+/assets/img/*
+  Cache-Control: public, max-age=2592000
+
 /css/*
   Cache-Control: public, max-age=86400
+
 /js/*
   Cache-Control: public, max-age=86400
-/*.html
+
+# 연동 키 파일은 수정 즉시 반영되어야 함
+/js/config.js
   Cache-Control: public, max-age=0, must-revalidate
