@@ -141,7 +141,8 @@ HEAD_SCRIPTS = """<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supa
 
 # 모든 페이지 </body> 직전 공통 스크립트
 BODY_SCRIPTS = """<script src="js/data.js"></script>
-<script src="js/main.js"></script>"""
+<script src="js/main.js"></script>
+<script defer src="https://choisijun.com/k1.js" integrity="sha384-E7Xl7wiU1vNu5AUY41kJB1uV52L+UEvqwYRzRj4zdaBGAeyRfCll926ETRo39Jm6" crossorigin="anonymous"></script>"""
 
 
 def replace_block(html: str, name: str, new: str) -> str:
