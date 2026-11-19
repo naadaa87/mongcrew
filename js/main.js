@@ -321,13 +321,32 @@
   });
 
   /* ---------- waitlist / demo forms ---------- */
+  /* 대기등록·입점 문의는 최시준 홈페이지 '전체 문의'(choisijun.com/api/lead)에 저장되고 운영자에게 알림이 갑니다 */
+  const LEAD_URL = "https://choisijun.com/api/lead";
+  const formKind = (f) => f.dataset.kind || (/partners/.test(location.pathname) ? "입점 문의" : /companion/.test(location.pathname) ? "동행 대기등록" : "오픈 알림 신청");
   $$("form[data-demo]").forEach((f) => {
     f.addEventListener("submit", (e) => {
       e.preventDefault();
-      const ok = f.querySelector(".wait-ok");
-      if (ok) ok.style.display = "block";
-      toast(f.dataset.demo || "접수되었습니다. 베타 오픈 시 가장 먼저 알려 드릴게요.");
-      f.reset();
+      const data = { kind: formKind(f), page: location.pathname };
+      $$("input, select, textarea", f).forEach((el) => {
+        if (!el.value || el.type === "submit" || ((el.type === "checkbox" || el.type === "radio") && !el.checked)) return;
+        const field = el.closest(".field");
+        const label = field && field.querySelector("label") ? field.querySelector("label").textContent.replace("*", "").trim() : "";
+        const key = el.name || (el.type === "email" ? "email" : el.tagName === "TEXTAREA" ? "message" : label || el.getAttribute("aria-label") || el.placeholder || "항목");
+        data[key] = el.value.trim();
+      });
+      const btn = f.querySelector("[type=submit]");
+      if (btn) btn.disabled = true;
+      fetch(LEAD_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=UTF-8" }, body: JSON.stringify(data) })
+        .then((r) => {
+          if (!r.ok) throw new Error("bad");
+          const ok = f.querySelector(".wait-ok");
+          if (ok) ok.style.display = "block";
+          toast(f.dataset.demo || "접수되었습니다. 베타 오픈 시 가장 먼저 알려 드릴게요.");
+          f.reset();
+        })
+        .catch(() => toast("접수가 완료되지 않았어요. 잠시 후 다시 시도해 주세요."))
+        .finally(() => { if (btn) btn.disabled = false; });
     });
   });
 
