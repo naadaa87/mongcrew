@@ -3,5 +3,6 @@ Allow: /
 Disallow: /mypage
 Disallow: /login
 Disallow: /auth-callback
+Disallow: /cdn-cgi/
 
 Sitemap: https://mongcrew.pages.dev/sitemap.xml
